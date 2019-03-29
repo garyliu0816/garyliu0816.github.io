@@ -61,11 +61,11 @@
     </summary>
     
     
+      <category term="environment" scheme="http://yoursite.com/tags/environment/"/>
+    
       <category term="python" scheme="http://yoursite.com/tags/python/"/>
     
       <category term="anaconda" scheme="http://yoursite.com/tags/anaconda/"/>
-    
-      <category term="environment" scheme="http://yoursite.com/tags/environment/"/>
     
   </entry>
   
