@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://garyliu0816.github.io/"/>
-  <updated>2019-03-30T07:54:26.577Z</updated>
+  <updated>2019-03-30T11:25:08.821Z</updated>
   <id>https://garyliu0816.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>about</title>
+    <link href="https://garyliu0816.github.io/about.html"/>
+    <id>https://garyliu0816.github.io/about.html</id>
+    <published>2019-03-30T11:22:32.000Z</published>
+    <updated>2019-03-30T11:25:08.821Z</updated>
+    
+    <content type="html"><![CDATA[<p>关于我</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;关于我&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>简单理解PRF</title>
