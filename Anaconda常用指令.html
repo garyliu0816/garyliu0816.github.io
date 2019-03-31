@@ -7,19 +7,19 @@
 
 
 
-    <meta name="description" content="1. 查看包123conda list     # 查看安装了哪些包conda env list # 查看有哪些虚拟环境conda -V       # 查看conda的版本">
+    <meta name="description" content="1. 查看包conda list     # 查看安装了哪些包conda env list # 查看有哪些虚拟环境conda -V       # 查看conda的版本">
 <meta name="keywords" content="python,anaconda">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Anaconda常用指令">
 <meta property="og:url" content="https://garyliu0816.github.io/Anaconda常用指令.html">
 <meta property="og:site_name" content="Garyliu&#39;s Blog">
-<meta property="og:description" content="1. 查看包123conda list     # 查看安装了哪些包conda env list # 查看有哪些虚拟环境conda -V       # 查看conda的版本">
+<meta property="og:description" content="1. 查看包conda list     # 查看安装了哪些包conda env list # 查看有哪些虚拟环境conda -V       # 查看conda的版本">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://garyliu0816.github.io/images/og_image.png">
 <meta property="og:updated_time" content="2019-03-30T06:19:56.940Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Anaconda常用指令">
-<meta name="twitter:description" content="1. 查看包123conda list     # 查看安装了哪些包conda env list # 查看有哪些虚拟环境conda -V       # 查看conda的版本">
+<meta name="twitter:description" content="1. 查看包conda list     # 查看安装了哪些包conda env list # 查看有哪些虚拟环境conda -V       # 查看conda的版本">
 <meta name="twitter:image" content="https://garyliu0816.github.io/images/og_image.png">
 
 
@@ -187,15 +187,15 @@ var _hmt = _hmt || [];
             
         </h1>
         <div class="content">
-            <h2 id="1-查看包"><a href="#1-查看包" class="headerlink" title="1. 查看包"></a>1. 查看包</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda list     <span class="hljs-comment"># 查看安装了哪些包</span></span><br><span class="line">conda env list <span class="hljs-comment"># 查看有哪些虚拟环境</span></span><br><span class="line">conda -V       <span class="hljs-comment"># 查看conda的版本</span></span><br></pre></td></tr></table></figure>
+            <h2 id="1-查看包"><a href="#1-查看包" class="headerlink" title="1. 查看包"></a>1. 查看包</h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">conda list     <span class="hljs-comment"># 查看安装了哪些包</span></span><br><span class="line">conda env list <span class="hljs-comment"># 查看有哪些虚拟环境</span></span><br><span class="line">conda -V       <span class="hljs-comment"># 查看conda的版本</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="2-创建虚拟环境"><a href="#2-创建虚拟环境" class="headerlink" title="2. 创建虚拟环境"></a>2. 创建虚拟环境</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda create -n [虚拟环境名] python=[python版本] [要安装的包...] </span><br><span class="line">conda create -n python3 python=3.6 numpy     <span class="hljs-comment"># 创建一个名为python3，python版本为3.6，安装了numpy的环境</span></span><br><span class="line">conda create -n backup --<span class="hljs-built_in">clone</span> root	     <span class="hljs-comment"># 创建一个名为backup的与root一样的环境</span></span><br></pre></td></tr></table></figure>
-<h2 id="3-切换环境"><a href="#3-切换环境" class="headerlink" title="3. 切换环境"></a>3. 切换环境</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">source</span> activate [环境名] <span class="hljs-comment"># Linux</span></span><br><span class="line">activate [环境名]        <span class="hljs-comment"># Windows</span></span><br></pre></td></tr></table></figure>
-<h2 id="4-关闭环境"><a href="#4-关闭环境" class="headerlink" title="4. 关闭环境"></a>4. 关闭环境</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">source</span> deactivate <span class="hljs-comment"># Linux</span></span><br><span class="line">deactivate        <span class="hljs-comment"># Windows</span></span><br></pre></td></tr></table></figure>
-<h2 id="5-指定虚拟环境安装包"><a href="#5-指定虚拟环境安装包" class="headerlink" title="5. 指定虚拟环境安装包"></a>5. 指定虚拟环境安装包</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda install -n [虚拟环境名] [包名]</span><br><span class="line"><span class="hljs-comment"># 或者可以先进入对应虚拟环境在执行pip</span></span><br><span class="line">pip install [包名]</span><br></pre></td></tr></table></figure>
-<h2 id="6-移除虚拟环境"><a href="#6-移除虚拟环境" class="headerlink" title="6. 移除虚拟环境"></a>6. 移除虚拟环境</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda remove --name [虚拟环境名] [包名] 	        <span class="hljs-comment"># 移除某个环境中的包</span></span><br><span class="line">conda remove -n [虚拟环境名] --all  		<span class="hljs-comment"># 移除某个虚拟环境</span></span><br></pre></td></tr></table></figure>
-<h2 id="7-将环境备份至requirement-txt"><a href="#7-将环境备份至requirement-txt" class="headerlink" title="7. 将环境备份至requirement.txt"></a>7. 将环境备份至requirement.txt</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure>
-<h2 id="8-安装备份的环境"><a href="#8-安装备份的环境" class="headerlink" title="8. 安装备份的环境"></a>8. 安装备份的环境</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<h2 id="2-创建虚拟环境"><a href="#2-创建虚拟环境" class="headerlink" title="2. 创建虚拟环境"></a>2. 创建虚拟环境</h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">conda create -n [虚拟环境名] python=[python版本] [要安装的包...] </span><br><span class="line">conda create -n python3 python=3.6 numpy     <span class="hljs-comment"># 创建一个名为python3，python版本为3.6，安装了numpy的环境</span></span><br><span class="line">conda create -n backup --<span class="hljs-built_in">clone</span> root	     <span class="hljs-comment"># 创建一个名为backup的与root一样的环境</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-切换环境"><a href="#3-切换环境" class="headerlink" title="3. 切换环境"></a>3. 切换环境</h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">source</span> activate [环境名] <span class="hljs-comment"># Linux</span></span><br><span class="line">activate [环境名]        <span class="hljs-comment"># Windows</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-关闭环境"><a href="#4-关闭环境" class="headerlink" title="4. 关闭环境"></a>4. 关闭环境</h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">source</span> deactivate <span class="hljs-comment"># Linux</span></span><br><span class="line">deactivate        <span class="hljs-comment"># Windows</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-指定虚拟环境安装包"><a href="#5-指定虚拟环境安装包" class="headerlink" title="5. 指定虚拟环境安装包"></a>5. 指定虚拟环境安装包</h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">conda install -n [虚拟环境名] [包名]</span><br><span class="line"><span class="hljs-comment"># 或者可以先进入对应虚拟环境在执行pip</span></span><br><span class="line">pip install [包名]</span><br></pre></td></tr></table></figure>
+<h2 id="6-移除虚拟环境"><a href="#6-移除虚拟环境" class="headerlink" title="6. 移除虚拟环境"></a>6. 移除虚拟环境</h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">conda remove --name [虚拟环境名] [包名] 	        <span class="hljs-comment"># 移除某个环境中的包</span></span><br><span class="line">conda remove -n [虚拟环境名] --all  		<span class="hljs-comment"># 移除某个虚拟环境</span></span><br></pre></td></tr></table></figure>
+<h2 id="7-将环境备份至requirement-txt"><a href="#7-将环境备份至requirement-txt" class="headerlink" title="7. 将环境备份至requirement.txt"></a>7. 将环境备份至requirement.txt</h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure>
+<h2 id="8-安装备份的环境"><a href="#8-安装备份的环境" class="headerlink" title="8. 安装备份的环境"></a>8. 安装备份的环境</h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -992,5 +992,5 @@ document.addEventListener('DOMContentLoaded', function () {
 <link rel="stylesheet" href="/css/search.css">
 <link rel="stylesheet" href="/css/insight.css">
     
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300,"superSample":2,"hOffset":-80,"vOffset":-140},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
