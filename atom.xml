@@ -41,13 +41,13 @@
   </entry>
   
   <entry>
-    <title>tensorflow+cuda+cudnn安装成功的版本</title>
-    <link href="https://garyliu0816.github.io/tensorflow-cuda-cudnn%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F%E7%9A%84%E7%89%88%E6%9C%AC.html"/>
-    <id>https://garyliu0816.github.io/tensorflow-cuda-cudnn安装成功的版本.html</id>
+    <title>tensorflow+cuda+cudnn安装成功的版本（持续更新）</title>
+    <link href="https://garyliu0816.github.io/tensorflow-cuda-cudnn%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F%E7%9A%84%E7%89%88%E6%9C%AC%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89.html"/>
+    <id>https://garyliu0816.github.io/tensorflow-cuda-cudnn安装成功的版本（持续更新）.html</id>
     <published>2019-03-27T13:41:37.000Z</published>
-    <updated>2019-03-30T06:21:16.668Z</updated>
+    <updated>2019-04-01T03:12:34.556Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="以下版本经过本人亲自测试可以安装使用"><a href="#以下版本经过本人亲自测试可以安装使用" class="headerlink" title="以下版本经过本人亲自测试可以安装使用"></a>以下版本经过本人亲自测试可以安装使用</h2><table><thead><tr><th>tensorflow</th><th style="text-align:right">cuda</th><th style="text-align:right">cudnn</th><th style="text-align:right">visual C++ redistributable</th><th style="text-align:right">build tools</th></tr></thead><tbody><tr><td>gpu-1.12.0</td><td style="text-align:right">9.0</td><td style="text-align:right">7</td><td style="text-align:right">2015 update 3</td><td style="text-align:right">2015 Update 3</td></tr><tr><td>gpu-1.13.1</td><td style="text-align:right">10.0</td><td style="text-align:right">7</td><td style="text-align:right">2015 update 3</td><td style="text-align:right">2015 Update 3</td></tr></tbody></table><a id="more"></a>]]></content>
+    <content type="html"><![CDATA[<h2 id="以下版本经过本人亲自测试可以安装使用"><a href="#以下版本经过本人亲自测试可以安装使用" class="headerlink" title="以下版本经过本人亲自测试可以安装使用"></a>以下版本经过本人亲自测试可以安装使用</h2><table><thead><tr><th>tensorflow</th><th style="text-align:right">cuda</th><th style="text-align:right">python</th><th style="text-align:right">cudnn</th><th style="text-align:right">visual C++ redistributable</th><th style="text-align:right">build tools</th></tr></thead><tbody><tr><td>gpu-1.13.1</td><td style="text-align:right">10.1</td><td style="text-align:right">3.7</td><td style="text-align:right">7</td><td style="text-align:right">2015 update 3</td><td style="text-align:right">2015 Update 3</td></tr><tr><td>gpu-1.13.1</td><td style="text-align:right">10.0</td><td style="text-align:right">3.6</td><td style="text-align:right">7</td><td style="text-align:right">2015 update 3</td><td style="text-align:right">2015 Update 3</td></tr><tr><td>gpu-1.12.0</td><td style="text-align:right">9.0</td><td style="text-align:right">3.5</td><td style="text-align:right">7</td><td style="text-align:right">2015 update 3</td><td style="text-align:right">2015 Update 3</td></tr></tbody></table><a id="more"></a>]]></content>
     
     <summary type="html">
     
@@ -56,6 +56,7 @@
 &lt;tr&gt;
 &lt;th&gt;tensorflow&lt;/th&gt;
 &lt;th style=&quot;text-align:right&quot;&gt;cuda&lt;/th&gt;
+&lt;th style=&quot;text-align:right&quot;&gt;python&lt;/th&gt;
 &lt;th style=&quot;text-align:right&quot;&gt;cudnn&lt;/th&gt;
 &lt;th style=&quot;text-align:right&quot;&gt;visual C++ redistributable&lt;/th&gt;
 &lt;th style=&quot;text-align:right&quot;&gt;build tools&lt;/th&gt;
@@ -63,8 +64,9 @@
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;gpu-1.12.0&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;9.0&lt;/td&gt;
+&lt;td&gt;gpu-1.13.1&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;10.1&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;3.7&lt;/td&gt;
 &lt;td style=&quot;text-align:right&quot;&gt;7&lt;/td&gt;
 &lt;td style=&quot;text-align:right&quot;&gt;2015 update 3&lt;/td&gt;
 &lt;td style=&quot;text-align:right&quot;&gt;2015 Update 3&lt;/td&gt;
@@ -72,6 +74,15 @@
 &lt;tr&gt;
 &lt;td&gt;gpu-1.13.1&lt;/td&gt;
 &lt;td style=&quot;text-align:right&quot;&gt;10.0&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;3.6&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;7&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;2015 update 3&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;2015 Update 3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;gpu-1.12.0&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;9.0&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;3.5&lt;/td&gt;
 &lt;td style=&quot;text-align:right&quot;&gt;7&lt;/td&gt;
 &lt;td style=&quot;text-align:right&quot;&gt;2015 update 3&lt;/td&gt;
 &lt;td style=&quot;text-align:right&quot;&gt;2015 Update 3&lt;/td&gt;
