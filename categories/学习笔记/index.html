@@ -180,7 +180,7 @@ var _hmt = _hmt || [];
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 961 个字)
+                    6 分钟 读完 (大约 964 个字)
                 </span>
                 
                 
@@ -212,10 +212,9 @@ var _hmt = _hmt || [];
 </ol>
 </blockquote>
 <p>这里的q(z)与p(z|X)是两个概率分布，通常计算两个概率分布的距离公式采用KL散度：</p>
-<p>$$KL(q(z) \parallel p(z|X))={\sum p(z|X)ln \frac{p(z|X)}{q(z)}}$$</p>
+<p>$$KL(q(x) \parallel p(x))={\sum p(x)ln \frac{p(x)}{q(x)}}$$</p>
 <p>训练VAE的损失函数：</p>
-<p>$$loss=BCE-KL$$</p>
-<p>在计算中我们要最大化BCE，最小化KL</p>
+<p>$$loss = KL(q(X,z) \parallel p(X,z)) = \sum [- \sum p(z|X)lnq(X|z) + D_{KL}(p(z|X) \parallel q(z))] $$</p>
 <h3 id="模态对齐的方式"><a href="#模态对齐的方式" class="headerlink" title="模态对齐的方式"></a>模态对齐的方式</h3><p>这里两种模态的特征都是用VAE生成的，第一个模态的特征z_1是使用图像生成的，第二个模态的特征z_2是使用类属性生成的，要使他们的属性对齐文中采用了两种损失函数。</p>
 <h4 id="交叉对齐损失"><a href="#交叉对齐损失" class="headerlink" title="交叉对齐损失"></a>交叉对齐损失</h4><p>实际上就是将一张图像x与其类属性分别通过编码器E_1、E_2后得到的z_1、z_2交叉通过解码器D_1、D_2得到的x’计算欧式距离<br><img src="https://garyliu0816.github.io/images/cross_align_loss.png" alt="交叉对齐损失"></p>
 <h4 id="分布对齐损失"><a href="#分布对齐损失" class="headerlink" title="分布对齐损失"></a>分布对齐损失</h4><p>这里实际上是在计算z_1、z_2的概率分布的相似程度，采用的是Wasserstein距离<br><img src="https://garyliu0816.github.io/images/wasserstein_distance.png" alt="交叉对齐损失"><br><img src="https://garyliu0816.github.io/images/distrib_align_loss.png" alt="交叉对齐损失"></p>
