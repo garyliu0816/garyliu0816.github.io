@@ -16,7 +16,7 @@
 <meta property="og:description" content="文中涉及的概念Few-shot learning每个类只有很少的可见例子（一般小于10），训练一个模型对其分类。 Zero-shot learning现有一些可见的例子和一些不可见的例子，使用可见的例子训练模型能够对不可见的例子进行分类。 Generalized zero-shot learning现有一些可见的例子和一些不可见的例子，使用可见的例子训练模型能够对所有的例子进行分类。 Multi-">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://garyliu0816.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-08T02:45:34.970Z">
+<meta property="og:updated_time" content="2019-05-08T02:47:56.738Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CADA-VAE论文阅读笔记">
 <meta name="twitter:description" content="文中涉及的概念Few-shot learning每个类只有很少的可见例子（一般小于10），训练一个模型对其分类。 Zero-shot learning现有一些可见的例子和一些不可见的例子，使用可见的例子训练模型能够对不可见的例子进行分类。 Generalized zero-shot learning现有一些可见的例子和一些不可见的例子，使用可见的例子训练模型能够对所有的例子进行分类。 Multi-">
@@ -169,7 +169,7 @@ var _hmt = _hmt || [];
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 967 个字)
+                    6 分钟 读完 (大约 968 个字)
                 </span>
                 
                 
@@ -190,7 +190,7 @@ var _hmt = _hmt || [];
             <h2 id="文中涉及的概念"><a href="#文中涉及的概念" class="headerlink" title="文中涉及的概念"></a>文中涉及的概念</h2><h3 id="Few-shot-learning"><a href="#Few-shot-learning" class="headerlink" title="Few-shot learning"></a>Few-shot learning</h3><p>每个类只有很少的可见例子（一般小于10），训练一个模型对其分类。</p>
 <h3 id="Zero-shot-learning"><a href="#Zero-shot-learning" class="headerlink" title="Zero-shot learning"></a>Zero-shot learning</h3><p>现有一些可见的例子和一些不可见的例子，使用可见的例子训练模型能够对不可见的例子进行分类。</p>
 <h3 id="Generalized-zero-shot-learning"><a href="#Generalized-zero-shot-learning" class="headerlink" title="Generalized zero-shot learning"></a>Generalized zero-shot learning</h3><p>现有一些可见的例子和一些不可见的例子，使用可见的例子训练模型能够对所有的例子进行分类。</p>
-<h3 id="Multi-modal-alignment"><a href="#Multi-modal-alignment" class="headerlink" title="Multi-modal alignment"></a>Multi-modal alignment</h3><p>多模态对齐，寻找不同模态（如图像、文字、语音）中的属性的对应关系，文中主要是指多个VAE中的latent space的属性的对齐。</p>
+<h3 id="Multi-modal-alignment"><a href="#Multi-modal-alignment" class="headerlink" title="Multi-modal alignment"></a>Multi-modal alignment</h3><p>多模态对齐，寻找不同模态（如图像、文字、语音）中的属性的对应关系，文中主要是指多个VAE中的latent space的属性的对齐。<br><a id="more"></a></p>
 <h2 id="本文主要的工作贡献"><a href="#本文主要的工作贡献" class="headerlink" title="本文主要的工作贡献"></a>本文主要的工作贡献</h2><ul>
 <li>训练了多个VAE从不同模态，如图像和类属性，中加密和解密特征，得到隐特征</li>
 <li>通过对齐参数分布和减小跨模态重构损失来使隐特征多模态对齐</li>
