@@ -179,7 +179,7 @@ var _hmt = _hmt || [];
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 954 个字)
+                    6 分钟 读完 (大约 961 个字)
                 </span>
                 
                 
@@ -211,7 +211,7 @@ var _hmt = _hmt || [];
 </ol>
 </blockquote>
 <p>这里的q(z)与p(z|X)是两个概率分布，通常计算两个概率分布的距离公式采用KL散度：</p>
-<p>$$KL(q(z) \parallel p(z|X))={TP\over{TP+FN}}$$</p>
+<p>$$KL(q(z) \parallel p(z|X))={\sum p(z|X)ln \frac{p(z|X)}{q(z)}}$$</p>
 <p>训练VAE的损失函数：</p>
 <p>$$loss=BCE-KL$$</p>
 <p>在计算中我们要最大化BCE，最小化KL</p>
