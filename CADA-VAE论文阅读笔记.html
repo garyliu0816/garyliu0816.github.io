@@ -16,7 +16,7 @@
 <meta property="og:description" content="文中涉及的概念Few-shot learning每个类只有很少的可见例子（一般小于10），训练一个模型对其分类。 Zero-shot learning现有一些可见的例子和一些不可见的例子，使用可见的例子训练模型能够对不可见的例子进行分类。 Generalized zero-shot learning现有一些可见的例子和一些不可见的例子，使用可见的例子训练模型能够对所有的例子进行分类。 Multi-">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://garyliu0816.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-08T13:33:36.904Z">
+<meta property="og:updated_time" content="2019-05-08T13:37:03.786Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CADA-VAE论文阅读笔记">
 <meta name="twitter:description" content="文中涉及的概念Few-shot learning每个类只有很少的可见例子（一般小于10），训练一个模型对其分类。 Zero-shot learning现有一些可见的例子和一些不可见的例子，使用可见的例子训练模型能够对不可见的例子进行分类。 Generalized zero-shot learning现有一些可见的例子和一些不可见的例子，使用可见的例子训练模型能够对所有的例子进行分类。 Multi-">
@@ -169,7 +169,7 @@ var _hmt = _hmt || [];
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 1003 个字)
+                    7 分钟 读完 (大约 1001 个字)
                 </span>
                 
                 
@@ -213,7 +213,7 @@ var _hmt = _hmt || [];
 <h4 id="交叉对齐损失"><a href="#交叉对齐损失" class="headerlink" title="交叉对齐损失"></a>交叉对齐损失</h4><p>实际上就是将一张图像x与其类属性分别通过编码器E_1、E_2后得到的z_1、z_2交叉通过解码器D_1、D_2得到的x’计算欧式距离</p>
 <p>$$loss_{CA} = \sum^M_i\sum^M_{j\not={i}}\left|x^{(j)}-D_j(E_i(x^{(i)}))\right|$$</p>
 <h4 id="分布对齐损失"><a href="#分布对齐损失" class="headerlink" title="分布对齐损失"></a>分布对齐损失</h4><p>这里实际上是在计算z_1、z_2的概率分布的相似程度，采用的是Wasserstein距离：</p>
-<p>\begin{equation}<br>W_{ij}=(\left | \mu_i-\mu_j\right |^2_2+\left |\sum\nolimits^{1\over2}_i-\sum\nolimits^{1\over2}<em>j \right |^2</em>{Frobenius})^{1\over2}<br>\end{equation}</p>
+<p>$$<br>W_{ij}=\left(\left|\mu_i-\mu_j\right|^2_2+\left|\sum\nolimits^{1\over2}_i-\sum\nolimits^{1\over2}<em>j\right|^2</em>{Frobenius}\right)^{1\over2}<br>$$</p>
 <p>而分布对齐损失就是所有组合情况的Wasserstein距离之和：</p>
 <p>$$loss_{DA}=\sum^M_i\sum^M_{j\not=i}W_{ij}$$</p>
 <h3 id="整体的损失函数"><a href="#整体的损失函数" class="headerlink" title="整体的损失函数"></a>整体的损失函数</h3><p>就是上述三个损失函数的加权求和：</p>
