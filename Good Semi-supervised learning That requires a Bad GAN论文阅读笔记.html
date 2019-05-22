@@ -16,7 +16,7 @@
 <meta property="og:description" content="前置知识GAN（生成对抗网络）在semi-supervised learning（半监督学习）上取得了较强的实证成果，但是有两点是我们都没搞明白的：  discriminator（判别器）是如何从与generator（生成器）的联合训练中收益的 为什么一个好的classification（分类）效果和一个好的生成器不能同时获得  本质目标为了更好的寻找能正确分类的low-density bound">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://garyliu0816.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-22T03:29:30.079Z">
+<meta property="og:updated_time" content="2019-05-22T03:33:31.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Good Semi-supervised learning That requires a Bad GAN论文阅读笔记">
 <meta name="twitter:description" content="前置知识GAN（生成对抗网络）在semi-supervised learning（半监督学习）上取得了较强的实证成果，但是有两点是我们都没搞明白的：  discriminator（判别器）是如何从与generator（生成器）的联合训练中收益的 为什么一个好的classification（分类）效果和一个好的生成器不能同时获得  本质目标为了更好的寻找能正确分类的low-density bound">
@@ -169,7 +169,7 @@ var _hmt = _hmt || [];
                 <span class="level-item has-text-grey">
                     
                     
-                    9 分钟 读完 (大约 1349 个字)
+                    9 分钟 读完 (大约 1350 个字)
                 </span>
                 
                 
@@ -192,7 +192,7 @@ var _hmt = _hmt || [];
 <li>discriminator（判别器）是如何从与generator（生成器）的联合训练中收益的</li>
 <li>为什么一个好的classification（分类）效果和一个好的生成器不能同时获得</li>
 </ol>
-<h3 id="本质目标"><a href="#本质目标" class="headerlink" title="本质目标"></a>本质目标</h3><p>为了更好的寻找能正确分类的low-density boundary（低密度边界）</p>
+<h3 id="本质目标"><a href="#本质目标" class="headerlink" title="本质目标"></a>本质目标</h3><p>为了更好的寻找能正确分类的low-density boundary（低密度边界）<br><a id="more"></a></p>
 <p><div align="center"><img src="https://garyliu0816.github.io/images/bad_gan_1.png" alt="low-density boundary"><br>为了防止非正确分类低密度边界的干扰，我们需要用生成器产生可见样本空间中的“补样”，填充一些低密度区域，此时的生成器产生的样本分布与真实分布是不一致的，因此生成器是“bad”的。</div></p>
 <p>OpenAI提出的基于GAN的半监督学习的优化目标（损失函数）如下：</p>
 <p><div align="center"><img src="https://garyliu0816.github.io/images/bad_gan_2.png" alt="semi-supervised-gan"></div></p>
