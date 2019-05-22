@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://garyliu0816.github.io/"/>
-  <updated>2019-05-08T13:37:03.786Z</updated>
+  <updated>2019-05-22T03:29:30.079Z</updated>
   <id>https://garyliu0816.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Good Semi-supervised learning That requires a Bad GAN论文阅读笔记</title>
+    <link href="https://garyliu0816.github.io/Good%20Semi-supervised%20learning%20That%20requires%20a%20Bad%20GAN%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0.html"/>
+    <id>https://garyliu0816.github.io/Good Semi-supervised learning That requires a Bad GAN论文阅读笔记.html</id>
+    <published>2019-05-22T02:26:07.000Z</published>
+    <updated>2019-05-22T03:29:30.079Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><p>GAN（生成对抗网络）在semi-supervised learning（半监督学习）上取得了较强的实证成果，但是有两点是<strong>我们都没搞明白的</strong>：</p><ol><li>discriminator（判别器）是如何从与generator（生成器）的联合训练中收益的</li><li>为什么一个好的classification（分类）效果和一个好的生成器不能同时获得</li></ol><h3 id="本质目标"><a href="#本质目标" class="headerlink" title="本质目标"></a>本质目标</h3><p>为了更好的寻找能正确分类的low-density boundary（低密度边界）</p><p><div align="center"><img src="https://garyliu0816.github.io/images/bad_gan_1.png" alt="low-density boundary"><br>为了防止非正确分类低密度边界的干扰，我们需要用生成器产生可见样本空间中的“补样”，填充一些低密度区域，此时的生成器产生的样本分布与真实分布是不一致的，因此生成器是“bad”的。</div></p><p>OpenAI提出的基于GAN的半监督学习的优化目标（损失函数）如下：</p><p><div align="center"><img src="https://garyliu0816.github.io/images/bad_gan_2.png" alt="semi-supervised-gan"></div></p><h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><ul><li>标注集L={(x,y)}，其中x为图像数据，{1,2,…,K}对应K个真类，还有一个K+1的假类</li><li>P_G、P_D是对应于G（生成器）和D（判别器）的概率分布，P_D覆盖K+1个类的分布，前K个类是真类，第K+1个类是假类（生成器生成的），和CatGAN一样</li><li>P是真实数据的概率分布</li></ul><p>这个损失函数由三部分组成。第一部分是最大化在标注集L中log下的P_D条件概率的数学期望，这个是基本的监督学习的损失函数；第二部分是最大化在真实数据p中log下的P_D对前K个类的概率的数学期望；第三部分是最大化在生成数据P_G中log下P_D对第K+1类概率的数学期望。</p><p>这样看还是太复杂了吧，我这里用一些简单的语言来<strong>解释</strong>：</p><p>第一部分，是希望D能从标注数据L中接收任意输入（x，y），得到的输出y^与输入时的y一致，也就是正确分类，然后将这种概率最大化。</p><p>第二部分，是希望D能从真实数据P（包含未标注数据）中接收任意输入x，得到的输出y被认为是真类，将这种概率最大化。</p><p>第三部分，是希望D能从生成数据P_G（都是假的）中接收任意输入x，得到的输出y被认为是假类，将这种概率最大化。<br>这里的D实际上就是一个多分类神经网络，D的最后一层就是一个softmax激活函数。</p><h2 id="理论推导"><a href="#理论推导" class="headerlink" title="理论推导"></a>理论推导</h2><p><div align="center"><img src="https://garyliu0816.github.io/images/bad_gan_3.png" alt="proposition1"></div></p><h3 id="提议1"><a href="#提议1" class="headerlink" title="提议1"></a>提议1</h3><p>如果生成器D是完美的，即P_D与P的分布完全一致，那么公式的第二部分和第三部分就是矛盾的，如果第二部分大，则第三部分必然很小，反之亦然。</p><p>因此，当生成器是完美的时候，不仅生成器不起作用，而且未标记的数据也没有得到有效利用。</p><p><div align="center"><img src="https://garyliu0816.github.io/images/bad_gan_4.png" alt="assumption1"></div></p><h3 id="假设1"><a href="#假设1" class="headerlink" title="假设1"></a>假设1</h3><p>收敛条件。当D收敛于一个训练集{L,U,G}（L是标注数据，U是未标注数据，G是生成数据），D能学到一个完全能正确分类的决策边界。更具体来说，（1）L中的数据均能正确分类；（2）G中的数据均被分在第K+1类（3）U中的数据均被分在前K个类中。</p><p><div align="center"><img src="https://garyliu0816.github.io/images/bad_gan_5.png" alt="lemma1"></div></p><p><div align="center"><img src="https://garyliu0816.github.io/images/bad_gan_6.png" alt="corollary1"></div></p><h3 id="推论1"><a href="#推论1" class="headerlink" title="推论1"></a>推论1</h3><p>当生成的数据是无穷多的时候，根据Lemma1，我们有以下推论，D在softmax前输出的属于前K个类的值均小于等于0</p><p><div align="center"><img src="https://garyliu0816.github.io/images/bad_gan_7.png" alt="proposition2"></div></p><h3 id="提议2"><a href="#提议2" class="headerlink" title="提议2"></a>提议2</h3><p>在满足推论1的情况下，我们所有的分类集合均正确分类。<br>直观地说，生成器生成补码样本，因此真实类的logits在补码样本中必须很低。因此，该鉴别器在低密度区域获得了类边界。</p><p><div align="center"><img src="https://garyliu0816.github.io/images/bad_gan_8.png" alt="pic1" title="黑色为真实数据，白色为稀疏区域（此图为上帝视角的Ground Truth）"></div></p><p><div align="center"><img src="https://garyliu0816.github.io/images/bad_gan_9.png" alt="pic2" title="黑色为生成数据，白色为稀疏区域"></div></p><h2 id="实验方法"><a href="#实验方法" class="headerlink" title="实验方法"></a>实验方法</h2><h3 id="Generator-Entropy（生成熵）"><a href="#Generator-Entropy（生成熵）" class="headerlink" title="Generator Entropy（生成熵）"></a>Generator Entropy（生成熵）</h3><p><div align="center"><img src="https://garyliu0816.github.io/images/bad_gan_10.png" alt="Generator Entropy"><br>这里可以用L_PT代替</div></p><p><div align="center"><img src="https://garyliu0816.github.io/images/bad_gan_11.png" alt="L_PT"></div></p><h3 id="Generating-Low-Density-Samples（生成低密度样本）"><a href="#Generating-Low-Density-Samples（生成低密度样本）" class="headerlink" title="Generating Low-Density Samples（生成低密度样本）"></a>Generating Low-Density Samples（生成低密度样本）</h3><p>最小化它</p><p><div align="center"><img src="https://garyliu0816.github.io/images/bad_gan_12.png" alt="Generating Low-Density Samples"></div></p><h3 id="生成器的目标函数（损失函数）"><a href="#生成器的目标函数（损失函数）" class="headerlink" title="生成器的目标函数（损失函数）"></a>生成器的目标函数（损失函数）</h3><p>也就是生成熵+生成低密度样本</p><p><div align="center"><img src="https://garyliu0816.github.io/images/bad_gan_13.png" alt="loss1"></div></p><h3 id="判别器的目标函数（损失函数）"><a href="#判别器的目标函数（损失函数）" class="headerlink" title="判别器的目标函数（损失函数）"></a>判别器的目标函数（损失函数）</h3><p><div align="center"><img src="https://garyliu0816.github.io/images/bad_gan_14.png" alt="loss2"></div></p><h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>当然是SOTA啦！</p><p><div align="center"><img src="https://garyliu0816.github.io/images/bad_gan_15.png" alt="result"></div></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前置知识&quot;&gt;&lt;a href=&quot;#前置知识&quot; class=&quot;headerlink&quot; title=&quot;前置知识&quot;&gt;&lt;/a&gt;前置知识&lt;/h2&gt;&lt;p&gt;GAN（生成对抗网络）在semi-supervised learning（半监督学习）上取得了较强的实证成果，但是有两点是&lt;
+      
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://garyliu0816.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="deep learning" scheme="https://garyliu0816.github.io/tags/deep-learning/"/>
+    
+      <category term="semi-supervised learning" scheme="https://garyliu0816.github.io/tags/semi-supervised-learning/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CADA-VAE论文阅读笔记</title>
     <link href="https://garyliu0816.github.io/CADA-VAE%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0.html"/>
     <id>https://garyliu0816.github.io/CADA-VAE论文阅读笔记.html</id>
     <published>2019-05-07T10:42:31.000Z</published>
-    <updated>2019-05-08T13:37:03.786Z</updated>
+    <updated>2019-05-22T02:57:21.511Z</updated>
     
     <content type="html"><![CDATA[<h2 id="文中涉及的概念"><a href="#文中涉及的概念" class="headerlink" title="文中涉及的概念"></a>文中涉及的概念</h2><h3 id="Few-shot-learning"><a href="#Few-shot-learning" class="headerlink" title="Few-shot learning"></a>Few-shot learning</h3><p>每个类只有很少的可见例子（一般小于10），训练一个模型对其分类。</p><h3 id="Zero-shot-learning"><a href="#Zero-shot-learning" class="headerlink" title="Zero-shot learning"></a>Zero-shot learning</h3><p>现有一些可见的例子和一些不可见的例子，使用可见的例子训练模型能够对不可见的例子进行分类。</p><h3 id="Generalized-zero-shot-learning"><a href="#Generalized-zero-shot-learning" class="headerlink" title="Generalized zero-shot learning"></a>Generalized zero-shot learning</h3><p>现有一些可见的例子和一些不可见的例子，使用可见的例子训练模型能够对所有的例子进行分类。</p><h3 id="Multi-modal-alignment"><a href="#Multi-modal-alignment" class="headerlink" title="Multi-modal alignment"></a>Multi-modal alignment</h3><p>多模态对齐，寻找不同模态（如图像、文字、语音）中的属性的对应关系，文中主要是指多个VAE中的latent space的属性的对齐。<br><a id="more"></a></p><h2 id="本文主要的工作贡献"><a href="#本文主要的工作贡献" class="headerlink" title="本文主要的工作贡献"></a>本文主要的工作贡献</h2><ul><li>训练了多个VAE从不同模态，如图像和类属性，中加密和解密特征，得到隐特征</li><li>通过对齐参数分布和减小跨模态重构损失来使隐特征多模态对齐</li><li>CADA-VAE证明了用于广义零镜头学习的交叉模态嵌入模型比数据生成方法具有更好的性能，建立了新的state-of-the-art。</li></ul><h2 id="主要的难点详解"><a href="#主要的难点详解" class="headerlink" title="主要的难点详解"></a>主要的难点详解</h2><h3 id="数据增强的方式"><a href="#数据增强的方式" class="headerlink" title="数据增强的方式"></a>数据增强的方式</h3><p>不是增强数据本身而是增强数据的表达（隐特征）</p><h4 id="VAE"><a href="#VAE" class="headerlink" title="VAE"></a>VAE</h4><p>变分自编码是自编码的一种，其学习得到的特征能够用于生成更多的数据。也就是我们想通过很多可观测到的X图像分布来构造出z特征，通过调整z的属性来得到更多不同的X1图像分布,所以我们的任务可以描述为：</p><blockquote><ol><li>使用X通过编码器计算得到z</li><li>通过z通过解码器计算得到X1</li><li>让q(z)与p(z|X)近可能的相似</li></ol></blockquote><p>这里的q(z)与p(z|X)是两个概率分布，通常计算两个概率分布的距离公式采用KL散度：</p><p>$$D_{KL}({q(x)}\parallel{p(x)})={\sum p(x)\ln\frac{p(x)}{q(x)}}$$</p><p>训练VAE的损失函数：</p><p>$$loss_{VAE} = D_{KL}(q(X,z) \parallel p(X,z)) = \sum [- \sum p(z|X)\ln{q(X|z)} + D_{KL}({p(z|X)}\parallel{q(z)})]$$</p><h3 id="模态对齐的方式"><a href="#模态对齐的方式" class="headerlink" title="模态对齐的方式"></a>模态对齐的方式</h3><p>这里两种模态的特征都是用VAE生成的，第一个模态的特征z_1是使用图像生成的，第二个模态的特征z_2是使用类属性生成的，要使他们的属性对齐文中采用了两种损失函数。</p><h4 id="交叉对齐损失"><a href="#交叉对齐损失" class="headerlink" title="交叉对齐损失"></a>交叉对齐损失</h4><p>实际上就是将一张图像x与其类属性分别通过编码器E_1、E_2后得到的z_1、z_2交叉通过解码器D_1、D_2得到的x’计算欧式距离</p><p>$$loss_{CA} = \sum^M_i\sum^M_{j\not={i}}\left|x^{(j)}-D_j(E_i(x^{(i)}))\right|$$</p><h4 id="分布对齐损失"><a href="#分布对齐损失" class="headerlink" title="分布对齐损失"></a>分布对齐损失</h4><p>这里实际上是在计算z_1、z_2的概率分布的相似程度，采用的是Wasserstein距离：</p><p>$$<br>W_{ij}=\left(\left|\mu_i-\mu_j\right|^2_2+\left|\sum\nolimits^{1\over2}_i-\sum\nolimits^{1\over2}<em>j\right|^2</em>{Frobenius}\right)^{1\over2}<br>$$</p><p>而分布对齐损失就是所有组合情况的Wasserstein距离之和：</p><p>$$loss_{DA}=\sum^M_i\sum^M_{j\not=i}W_{ij}$$</p><h3 id="整体的损失函数"><a href="#整体的损失函数" class="headerlink" title="整体的损失函数"></a>整体的损失函数</h3><p>就是上述三个损失函数的加权求和：</p><p>$$loss_{CADA-VAE}=loss_{VAE}+\gamma loss_{CA}+\delta loss_{DA}$$</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>作者提出的zero-shot learning的思想主要是如何将图像通过一个VAE得到的特征与该图像对应的类属性通过另一个VAE得到的特征对应起来，这样就可以将类属性提取的特征可以与图像提取的特征进行比较，当一个未知图像进入模型后就能计算出它的特征与各个类属性的特征之间的距离，根据各个距离之间的比例就能实现zero-shot learning。</p>]]></content>
     
@@ -50,7 +77,7 @@
     <link href="https://garyliu0816.github.io/%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3PRF.html"/>
     <id>https://garyliu0816.github.io/简单理解PRF.html</id>
     <published>2019-03-30T06:29:17.000Z</published>
-    <updated>2019-05-07T12:19:53.541Z</updated>
+    <updated>2019-05-22T02:42:34.008Z</updated>
     
     <content type="html"><![CDATA[<h2 id="精准率"><a href="#精准率" class="headerlink" title="精准率"></a>精准率</h2><p>模型输出的结果是正确的概率</p><h2 id="召回率"><a href="#召回率" class="headerlink" title="召回率"></a>召回率</h2><p>模型中原本应该输出的结果是实际输出的概率</p><h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><p><div align="center"><img src="https://garyliu0816.github.io/images/confusion_matrix.png" alt="混淆矩阵"><br><a id="more"></a></div></p><h3 id="精准率-1"><a href="#精准率-1" class="headerlink" title="精准率"></a>精准率</h3><p>$$P={TP\over{TP+FP}}$$</p><h3 id="回归率"><a href="#回归率" class="headerlink" title="回归率"></a>回归率</h3><p>$$R={TP\over{TP+FN}}$$</p><h3 id="F1-score"><a href="#F1-score" class="headerlink" title="F1-score"></a>F1-score</h3><p>$$F1=2{PR\over{P+R}}$$</p><h2 id="多说一句"><a href="#多说一句" class="headerlink" title="多说一句"></a>多说一句</h2><ul><li>精准率低相当于输出的预测很多都是错的</li><li>召回率低相当于很多应该被预测到的结果没有预测到</li></ul>]]></content>
     
