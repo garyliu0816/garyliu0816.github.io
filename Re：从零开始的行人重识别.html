@@ -2,30 +2,31 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签 - Garyliu&#39;s Blog</title>
+<title>Re：从零开始的行人重识别（一） - Garyliu&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="A space to record my issue.">
-<meta name="keywords" content="deep learning,zero-shot learning,few-shot learning,markdown,semi-supervised learning,ReID,tensorflow,gpu,cuda,python,anaconda">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Garyliu&#39;s Blog">
-<meta property="og:url" content="https://garyliu0816.github.io/tags/index.html">
+    <meta name="description" content="绪言马上研二要开题了，提前通过blog的方式先把研究思路理清楚，也算是重新温习一下学习过程中遇到的问题吧，希望能给自己带来一些新的思路，同时帮助一些刚刚接触reID的同学入门（虽然应该没什么人会看），如有勘误可以提出来，我会及时改正的。 什么是行人重识别？行人重识别的是属于计算机视觉下的重要的也是当前比较困难的任务。它主要要解决问题是如何在不同的摄像头下找到相同的一个人，这种问题其实可以看做是一个">
+<meta name="keywords" content="ReID">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Re：从零开始的行人重识别（一）">
+<meta property="og:url" content="https://garyliu0816.github.io/Re：从零开始的行人重识别.html">
 <meta property="og:site_name" content="Garyliu&#39;s Blog">
-<meta property="og:description" content="A space to record my issue.">
+<meta property="og:description" content="绪言马上研二要开题了，提前通过blog的方式先把研究思路理清楚，也算是重新温习一下学习过程中遇到的问题吧，希望能给自己带来一些新的思路，同时帮助一些刚刚接触reID的同学入门（虽然应该没什么人会看），如有勘误可以提出来，我会及时改正的。 什么是行人重识别？行人重识别的是属于计算机视觉下的重要的也是当前比较困难的任务。它主要要解决问题是如何在不同的摄像头下找到相同的一个人，这种问题其实可以看做是一个">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://garyliu0816.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-11-17T12:15:28.422Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Garyliu&#39;s Blog">
-<meta name="twitter:description" content="A space to record my issue.">
+<meta name="twitter:title" content="Re：从零开始的行人重识别（一）">
+<meta name="twitter:description" content="绪言马上研二要开题了，提前通过blog的方式先把研究思路理清楚，也算是重新温习一下学习过程中遇到的问题吧，希望能给自己带来一些新的思路，同时帮助一些刚刚接触reID的同学入门（虽然应该没什么人会看），如有勘误可以提出来，我会及时改正的。 什么是行人重识别？行人重识别的是属于计算机视觉下的重要的也是当前比较困难的任务。它主要要解决问题是如何在不同的摄像头下找到相同的一个人，这种问题其实可以看做是一个">
 <meta name="twitter:image" content="https://garyliu0816.github.io/images/og_image.png">
 
 
 
 
 
-<link rel="alternative" href="/atom.xml" title="Garyliu&#39;s Blog" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="Re：从零开始的行人重识别（一）" type="application/atom+xml">
 
 
 
@@ -118,7 +119,7 @@ var _hmt = _hmt || [];
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Garyliu&#39;s Blog" height="28">
+                <img src="/images/logo.svg" alt="Re：从零开始的行人重识别（一）" height="28">
             
             </a>
         </div>
@@ -132,7 +133,7 @@ var _hmt = _hmt || [];
                 
                 <a class="navbar-item" href="/categories">分类</a>
                 
-                <a class="navbar-item is-active" href="/tags">标签</a>
+                <a class="navbar-item" href="/tags">标签</a>
                 
             </div>
             
@@ -152,95 +153,144 @@ var _hmt = _hmt || [];
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-17T09:56:18.000Z">2019-11-17</time>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/ReID/">
-                        <span class="tag">ReID</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/教程/">教程</a>
                 </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/anaconda/">
-                        <span class="tag">anaconda</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/cuda/">
-                        <span class="tag">cuda</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分钟 读完 (大约 750 个字)
+                </span>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/deep-learning/">
-                        <span class="tag">deep learning</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/few-shot-learning/">
-                        <span class="tag">few-shot learning</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/gpu/">
-                        <span class="tag">gpu</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/markdown/">
-                        <span class="tag">markdown</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/python/">
-                        <span class="tag">python</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/semi-supervised-learning/">
-                        <span class="tag">semi-supervised learning</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/tensorflow/">
-                        <span class="tag">tensorflow</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/zero-shot-learning/">
-                        <span class="tag">zero-shot learning</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
                 
             </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Re：从零开始的行人重识别（一）
+            
+        </h1>
+        <div class="content">
+            <h2 id="绪言"><a href="#绪言" class="headerlink" title="绪言"></a>绪言</h2><p>马上研二要开题了，提前通过blog的方式先把研究思路理清楚，也算是重新温习一下学习过程中遇到的问题吧，希望能给自己带来一些新的思路，同时帮助一些刚刚接触reID的同学入门（<del>虽然应该没什么人会看</del>），如有勘误可以提出来，我会及时改正的。</p>
+<h2 id="什么是行人重识别？"><a href="#什么是行人重识别？" class="headerlink" title="什么是行人重识别？"></a>什么是行人重识别？</h2><p>行人重识别的是属于计算机视觉下的重要的也是当前比较困难的任务。它主要要解决问题是如何在不同的摄像头下找到相同的一个人，这种问题其实可以看做是一个图像检索的问题，即是通过一张行人在一个摄像头下的图像（或视频）作为检索目标，在其余摄像头中找到与之最相似的行人。</p>
+<h2 id="为什么需要行人重识别？"><a href="#为什么需要行人重识别？" class="headerlink" title="为什么需要行人重识别？"></a>为什么需要行人重识别？</h2><p>主要是由于当前用于行人检测的摄像头大多是固定位置的局限性，当行人离开摄像头后，就无法继续追踪新摄像头下的行人，当行人重识别与行人检测技术相结合后，就可以弥补缺陷。行人重识别广泛应用于智能视频监控、智能安保等领域。</p>
+<h2 id="行人重识别问题的难点"><a href="#行人重识别问题的难点" class="headerlink" title="行人重识别问题的难点"></a>行人重识别问题的难点</h2><ol>
+<li>在监控摄像头下的人脸往往模糊无法看清，因此不能直接使用人脸的信息作为识别的特征。</li>
+<li>不同的摄像头下因光照、行人的尺寸、行人的姿态，行人的朝向的不同，导致行人不能只靠颜色、轮廓等信息进行重识别。</li>
+<li>当前的行人重识别模型的泛化能力还有所欠缺，在一个数据集上训练的数据无法在另一个数据集上也有较好的表现。</li>
+</ol>
+<h2 id="行人重识别常用数据集介绍"><a href="#行人重识别常用数据集介绍" class="headerlink" title="行人重识别常用数据集介绍"></a>行人重识别常用数据集介绍</h2><h3 id="Market1501"><a href="#Market1501" class="headerlink" title="Market1501"></a>Market1501</h3><p>2015年清华大学整理并提出，采集自6个摄像头（其中5个高清摄像头和1个低清摄像头）。Market1501包含了12,936张训练（train）图像，3,368张查询（query）图像，以及19,732张测试（test）图像，数据集包含1501个ID，其中训练集包含751个ID的图像，测试集包含750个ID的图像。</p>
+<p><a href="https://pan.baidu.com/s/1ntIi2Op" target="_blank" rel="noopener">下载链接</a></p>
+<h3 id="DukeMTMC-reID"><a href="#DukeMTMC-reID" class="headerlink" title="DukeMTMC-reID"></a>DukeMTMC-reID</h3><p>2017年Duke大学提出，采集自8个不同的摄像头，是DukeMTMC数据集的子集，DukeMTMC-reID包含了16,522张训练图像，2,228个查询图像，以及17,661张测试图像，数据集包含1404个ID，其中训练集包含702个ID的图像，测试集包含702个ID的图像。</p>
+<p><a href="https://pan.baidu.com/s/1jS0XM7Var5nQGcbf9xUztw" target="_blank" rel="noopener">下载链接</a>提取码:bhbh</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/ReID/">ReID</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
     </div>
-</div></div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Good Semi-supervised learning That requires a Bad GAN论文阅读笔记.html">
+                <span class="level-item">Good Semi-supervised learning That requires a Bad GAN论文阅读笔记</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'c51dc53e0447e0736f30',
+        clientSecret: '9e76df8d74a5c05517b48c71c3e9541adeb5e97b',
+        id: '39f45204894ea394b18adcf3ead1c603',
+        repo: 'comments',
+        owner: 'garyliu0816',
+        admin: "garyliu0816"
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
                 
 
 
@@ -893,7 +943,7 @@ var _hmt = _hmt || [];
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Garyliu&#39;s Blog" height="28">
+                    <img src="/images/logo.svg" alt="Re：从零开始的行人重识别（一）" height="28">
                 
                 </a>
                 <p class="is-size-7">
