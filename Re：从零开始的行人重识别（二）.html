@@ -2,30 +2,31 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签: markdown - Garyliu&#39;s Blog</title>
+<title>Re：从零开始的行人重识别（二） - Garyliu&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="A space to record my issue.">
-<meta name="keywords" content="machine learning,deep learning,blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Garyliu&#39;s Blog">
-<meta property="og:url" content="https://garyliu0816.github.io/tags/markdown/index.html">
+    <meta name="description" content="用分类来学习行人特征 Geng M, Wang Y, Xiang T, et al. Deep transfer learning for person re-identification[J]. arXiv preprint arXiv:1611.05244, 2016.  该论文的提出的模型是使用的ImageNet上训练好的模型进行初始化，然后对特征采用了两个子网络进行训练，一个是分类子网络，">
+<meta name="keywords" content="ReID">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Re：从零开始的行人重识别（二）">
+<meta property="og:url" content="https://garyliu0816.github.io/Re：从零开始的行人重识别（二）.html">
 <meta property="og:site_name" content="Garyliu&#39;s Blog">
-<meta property="og:description" content="A space to record my issue.">
+<meta property="og:description" content="用分类来学习行人特征 Geng M, Wang Y, Xiang T, et al. Deep transfer learning for person re-identification[J]. arXiv preprint arXiv:1611.05244, 2016.  该论文的提出的模型是使用的ImageNet上训练好的模型进行初始化，然后对特征采用了两个子网络进行训练，一个是分类子网络，">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://garyliu0816.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-11-18T13:54:50.074Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Garyliu&#39;s Blog">
-<meta name="twitter:description" content="A space to record my issue.">
+<meta name="twitter:title" content="Re：从零开始的行人重识别（二）">
+<meta name="twitter:description" content="用分类来学习行人特征 Geng M, Wang Y, Xiang T, et al. Deep transfer learning for person re-identification[J]. arXiv preprint arXiv:1611.05244, 2016.  该论文的提出的模型是使用的ImageNet上训练好的模型进行初始化，然后对特征采用了两个子网络进行训练，一个是分类子网络，">
 <meta name="twitter:image" content="https://garyliu0816.github.io/images/og_image.png">
 
 
 
 
 
-<link rel="alternative" href="/atom.xml" title="Garyliu&#39;s Blog" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="Re：从零开始的行人重识别（二）" type="application/atom+xml">
 
 
 
@@ -118,7 +119,7 @@ var _hmt = _hmt || [];
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Garyliu&#39;s Blog" height="28">
+                <img src="/images/logo.svg" alt="Re：从零开始的行人重识别（二）" height="28">
             
             </a>
         </div>
@@ -153,68 +154,142 @@ var _hmt = _hmt || [];
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">markdown</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-26T11:16:21.000Z">2019-03-26</time>
+                <time class="level-item has-text-grey" datetime="2019-11-18T12:38:44.000Z">2019-11-18</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/学习笔记/">学习笔记</a>
+                <a class="has-link-grey -link" href="/categories/教程/">教程</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 273 个字)
+                    5 分钟 读完 (大约 800 个字)
                 </span>
                 
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
                 
             </div>
         </div>
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/Markdown常用标记.html">Markdown常用标记</a>
+                Re：从零开始的行人重识别（二）
             
         </h1>
         <div class="content">
-            <h2 id="1-标题"><a href="#1-标题" class="headerlink" title="1. 标题"></a>1. 标题</h2><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br></pre></td></tr></table></figure>
+            <h2 id="用分类来学习行人特征"><a href="#用分类来学习行人特征" class="headerlink" title="用分类来学习行人特征"></a>用分类来学习行人特征</h2><blockquote>
+<p>Geng M, Wang Y, Xiang T, et al. Deep transfer learning for person re-identification[J]. arXiv preprint arXiv:1611.05244, 2016.</p>
+</blockquote>
+<p>该论文的提出的模型是使用的ImageNet上训练好的模型进行初始化，然后对特征采用了两个子网络进行训练，一个是分类子网络，一个是验证子网络。分类子网络的输入是一张一张的图像，采用的损失函数是cross-entropy loss，这样使得类间特征的距离扩大。验证子网络的输入是成对的图像，值得注意的是这里采用的损失函数不是contrastive loss而是与之前一样的cross-entropy loss，参考作者给出的原因是他们发现用contrastive loss反而模型性能会变差，具体操作是将成对的图像特征相减，然后当做是二分类模型，输出相似或者不相似，这样能使类内特征的距离减小。<br><a id="more"></a><br>该模型的结构如下：</p>
+<p><div align="center"><img src="https://garyliu0816.github.io/images/ReID_1.png" alt="deep Re-ID network architecture"></div></p>
+<p>论文中的细节：</p>
+<ol>
+<li>base network采用的是在ImageNet上预训练过的GoogLeNet，发现效果和ResNet相当。</li>
+<li>提出一种Loss specific dropout unit，该单元特殊用于验证子网络，因为要对两个图像进行相减操作，因此两张图像的dropout的方式要相同，因此使用了一个mask来记录要drop的元素。</li>
+<li>提出一种Two-stepped fine-tuning，第一步是将模型冻结，将原GoogLeNet中的softmax层的节点数量替换为数据集类别数量，单独训练分类子网络。第二步是，解除冻结，对整个网络进行微调。</li>
+</ol>
+<p>除此之外，作者还讨论了无监督迁移学习方法之间效果的比较。这里讨论的是Self-training和Co-training。无监督的迁移学习用到的数据也是多个摄像头拍摄的行人，假设我们现在有A、B两个摄像头拍下的无标签的行人图像，A摄像头下的每个行人我们都赋予一个独特的ID，然后通过最近邻搜索找到B摄像头中与之最接近的行人并附上相同的标签，这个想法很简单，但是实现起来效果很差，因为很容易存在多个A摄像头中的行人都是B摄像头中的同一个行人与之最相似，而B摄像头中的某些行人无法与A摄像头中的行人ID产生对应关系。<br>而Co-training正好就能弥补Self-training的缺陷，主要流程是设计两个具有互补性质的模型，用模型1来标注所有的无标签数据，用模型1标注的数据来训练模型2，再用模型2来标注所有的无标签数据，用模型2标注的数据来训练模型1，循环直到所有的未标注数据都拥有标注为止。</p>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/Markdown常用标记.html#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/ReID/">ReID</a>
                 </div>
             </div>
         </div>
         
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
         
     </div>
 </div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Re：从零开始的行人重识别（一）.html">
+                <span class="level-item">Re：从零开始的行人重识别（一）</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'c51dc53e0447e0736f30',
+        clientSecret: '9e76df8d74a5c05517b48c71c3e9541adeb5e97b',
+        id: '2c1650d3cabe5f91f28d430dbf4bf88c',
+        repo: 'comments',
+        owner: 'garyliu0816',
+        admin: "garyliu0816"
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
 </div>
                 
 
@@ -868,7 +943,7 @@ var _hmt = _hmt || [];
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Garyliu&#39;s Blog" height="28">
+                    <img src="/images/logo.svg" alt="Re：从零开始的行人重识别（二）" height="28">
                 
                 </a>
                 <p class="is-size-7">

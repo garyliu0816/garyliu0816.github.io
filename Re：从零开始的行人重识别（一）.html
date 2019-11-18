@@ -16,7 +16,7 @@
 <meta property="og:description" content="绪言马上研二要开题了，提前通过blog的方式先把研究思路理清楚，也算是重新温习一下学习过程中遇到的问题吧，希望能给自己带来一些新的思路，同时帮助一些刚刚接触reID的同学入门（虽然应该没什么人会看），如有勘误可以提出来，我会及时改正的。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://garyliu0816.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-11-17T18:02:36.710Z">
+<meta property="og:updated_time" content="2019-11-18T12:43:24.564Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Re：从零开始的行人重识别（一）">
 <meta name="twitter:description" content="绪言马上研二要开题了，提前通过blog的方式先把研究思路理清楚，也算是重新温习一下学习过程中遇到的问题吧，希望能给自己带来一些新的思路，同时帮助一些刚刚接触reID的同学入门（虽然应该没什么人会看），如有勘误可以提出来，我会及时改正的。">
@@ -169,7 +169,7 @@ var _hmt = _hmt || [];
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 751 个字)
+                    5 分钟 读完 (大约 803 个字)
                 </span>
                 
                 
@@ -195,9 +195,15 @@ var _hmt = _hmt || [];
 <li>不同的摄像头下因光照、行人的尺寸、行人的姿态，行人的朝向的不同，导致行人不能只靠颜色、轮廓等信息进行重识别。</li>
 <li>当前的行人重识别模型的泛化能力还有所欠缺，在一个数据集上训练的数据无法在另一个数据集上也有较好的表现。</li>
 </ol>
-<h2 id="行人重识别常用数据集介绍"><a href="#行人重识别常用数据集介绍" class="headerlink" title="行人重识别常用数据集介绍"></a>行人重识别常用数据集介绍</h2><h3 id="Market1501"><a href="#Market1501" class="headerlink" title="Market1501"></a>Market1501</h3><p>2015年清华大学整理并提出，采集自6个摄像头（其中5个高清摄像头和1个低清摄像头）。Market1501包含了12,936张训练（train）图像，3,368张查询（query）图像，以及19,732张测试（test）图像，数据集包含1501个ID，其中训练集包含751个ID的图像，测试集包含750个ID的图像。</p>
+<h2 id="行人重识别常用数据集介绍"><a href="#行人重识别常用数据集介绍" class="headerlink" title="行人重识别常用数据集介绍"></a>行人重识别常用数据集介绍</h2><h3 id="Market1501"><a href="#Market1501" class="headerlink" title="Market1501"></a>Market1501</h3><blockquote>
+<p>Zheng L, Shen L, Tian L, et al. Scalable person re-identification: A benchmark[C]//Proceedings of the IEEE international conference on computer vision. 2015: 1116-1124.</p>
+</blockquote>
+<p>2015年清华大学整理并提出，采集自6个摄像头（其中5个高清摄像头和1个低清摄像头）。Market1501包含了12,936张训练（train）图像，3,368张查询（query）图像，以及19,732张测试（test）图像，数据集包含1501个ID，其中训练集包含751个ID的图像，测试集包含750个ID的图像。</p>
 <p><a href="https://pan.baidu.com/s/1ntIi2Op" target="_blank" rel="noopener">下载链接</a></p>
-<h3 id="DukeMTMC-reID"><a href="#DukeMTMC-reID" class="headerlink" title="DukeMTMC-reID"></a>DukeMTMC-reID</h3><p>2017年Duke大学提出，采集自8个不同的摄像头，是DukeMTMC数据集的子集，DukeMTMC-reID包含了16,522张训练图像，2,228个查询图像，以及17,661张测试图像，数据集包含1404个ID，其中训练集包含702个ID的图像，测试集包含702个ID的图像。</p>
+<h3 id="DukeMTMC-reID"><a href="#DukeMTMC-reID" class="headerlink" title="DukeMTMC-reID"></a>DukeMTMC-reID</h3><blockquote>
+<p>Ristani E, Solera F, Zou R, et al. Performance measures and a data set for multi-target, multi-camera tracking[C]//European Conference on Computer Vision. Springer, Cham, 2016: 17-35.</p>
+</blockquote>
+<p>2017年Duke大学提出，采集自8个不同的摄像头，是DukeMTMC数据集的子集，DukeMTMC-reID包含了16,522张训练图像，2,228个查询图像，以及17,661张测试图像，数据集包含1404个ID，其中训练集包含702个ID的图像，测试集包含702个ID的图像。</p>
 <p><a href="https://pan.baidu.com/s/1jS0XM7Var5nQGcbf9xUztw" target="_blank" rel="noopener">下载链接</a>提取码:bhbh</p>
 
         </div>
@@ -255,6 +261,13 @@ var _hmt = _hmt || [];
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Re：从零开始的行人重识别（二）.html">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Re：从零开始的行人重识别（二）</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -335,7 +348,7 @@ var _hmt = _hmt || [];
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        7
+                        8
                     </p>
                 </div>
             </div>
@@ -466,7 +479,7 @@ var _hmt = _hmt || [];
                 <span class="level-item">教程</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/环境配置/">
@@ -488,7 +501,7 @@ var _hmt = _hmt || [];
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/ReID/" style="font-size: 10px;">ReID</a> <a href="/tags/anaconda/" style="font-size: 10px;">anaconda</a> <a href="/tags/cuda/" style="font-size: 10px;">cuda</a> <a href="/tags/deep-learning/" style="font-size: 20px;">deep learning</a> <a href="/tags/few-shot-learning/" style="font-size: 10px;">few-shot learning</a> <a href="/tags/gpu/" style="font-size: 10px;">gpu</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/semi-supervised-learning/" style="font-size: 10px;">semi-supervised learning</a> <a href="/tags/tensorflow/" style="font-size: 10px;">tensorflow</a> <a href="/tags/zero-shot-learning/" style="font-size: 10px;">zero-shot learning</a>
+        <a href="/tags/ReID/" style="font-size: 15px;">ReID</a> <a href="/tags/anaconda/" style="font-size: 10px;">anaconda</a> <a href="/tags/cuda/" style="font-size: 10px;">cuda</a> <a href="/tags/deep-learning/" style="font-size: 20px;">deep learning</a> <a href="/tags/few-shot-learning/" style="font-size: 10px;">few-shot learning</a> <a href="/tags/gpu/" style="font-size: 10px;">gpu</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/semi-supervised-learning/" style="font-size: 10px;">semi-supervised learning</a> <a href="/tags/tensorflow/" style="font-size: 10px;">tensorflow</a> <a href="/tags/zero-shot-learning/" style="font-size: 10px;">zero-shot learning</a>
     </div>
 </div>
 
@@ -502,6 +515,19 @@ var _hmt = _hmt || [];
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-18T12:38:44.000Z">2019-11-18</time></div>
+                    <a href="/Re：从零开始的行人重识别（二）.html" class="has-link-black-ter is-size-6">Re：从零开始的行人重识别（二）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/教程/">教程</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -555,19 +581,6 @@ var _hmt = _hmt || [];
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-27T13:41:37.000Z">2019-03-27</time></div>
-                    <a href="/tensorflow-cuda-cudnn安装成功的版本（持续更新）.html" class="has-link-black-ter is-size-6">tensorflow+cuda+cudnn安装成功的版本（持续更新）</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/环境配置/">环境配置</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -586,7 +599,7 @@ var _hmt = _hmt || [];
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -629,7 +642,7 @@ var _hmt = _hmt || [];
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ReID/">
                         <span class="tag">ReID</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -730,6 +743,19 @@ var _hmt = _hmt || [];
             
             <div class="media-content">
                 <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-18T12:38:44.000Z">2019-11-18</time></div>
+                    <a href="/Re：从零开始的行人重识别（二）.html" class="has-link-black-ter is-size-6">Re：从零开始的行人重识别（二）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/教程/">教程</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T09:56:18.000Z">2019-11-17</time></div>
                     <a href="/Re：从零开始的行人重识别（一）.html" class="has-link-black-ter is-size-6">Re：从零开始的行人重识别（一）</a>
                     <p class="is-size-7 is-uppercase">
@@ -778,19 +804,6 @@ var _hmt = _hmt || [];
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-27T13:41:37.000Z">2019-03-27</time></div>
-                    <a href="/tensorflow-cuda-cudnn安装成功的版本（持续更新）.html" class="has-link-black-ter is-size-6">tensorflow+cuda+cudnn安装成功的版本（持续更新）</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/环境配置/">环境配置</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -809,7 +822,7 @@ var _hmt = _hmt || [];
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -852,7 +865,7 @@ var _hmt = _hmt || [];
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ReID/">
                         <span class="tag">ReID</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
