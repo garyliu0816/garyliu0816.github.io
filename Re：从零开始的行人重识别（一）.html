@@ -16,7 +16,7 @@
 <meta property="og:description" content="绪言马上研二要开题了，提前通过blog的方式先把研究思路理清楚，也算是重新温习一下学习过程中遇到的问题吧，希望能给自己带来一些新的思路，同时帮助一些刚刚接触reID的同学入门（虽然应该没什么人会看），如有勘误可以提出来，我会及时改正的。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://garyliu0816.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-11-18T12:43:24.564Z">
+<meta property="og:updated_time" content="2019-11-19T03:25:04.900Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Re：从零开始的行人重识别（一）">
 <meta name="twitter:description" content="绪言马上研二要开题了，提前通过blog的方式先把研究思路理清楚，也算是重新温习一下学习过程中遇到的问题吧，希望能给自己带来一些新的思路，同时帮助一些刚刚接触reID的同学入门（虽然应该没什么人会看），如有勘误可以提出来，我会及时改正的。">
@@ -169,7 +169,7 @@ var _hmt = _hmt || [];
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 803 个字)
+                    9 分钟 读完 (大约 1351 个字)
                 </span>
                 
                 
@@ -198,13 +198,23 @@ var _hmt = _hmt || [];
 <h2 id="行人重识别常用数据集介绍"><a href="#行人重识别常用数据集介绍" class="headerlink" title="行人重识别常用数据集介绍"></a>行人重识别常用数据集介绍</h2><h3 id="Market1501"><a href="#Market1501" class="headerlink" title="Market1501"></a>Market1501</h3><blockquote>
 <p>Zheng L, Shen L, Tian L, et al. Scalable person re-identification: A benchmark[C]//Proceedings of the IEEE international conference on computer vision. 2015: 1116-1124.</p>
 </blockquote>
-<p>2015年清华大学整理并提出，采集自6个摄像头（其中5个高清摄像头和1个低清摄像头）。Market1501包含了12,936张训练（train）图像，3,368张查询（query）图像，以及19,732张测试（test）图像，数据集包含1501个ID，其中训练集包含751个ID的图像，测试集包含750个ID的图像。</p>
+<p>2015年清华大学整理并提出，采集自6个摄像头（其中5个高清摄像头和1个低清摄像头）。Market1501包含了12,936张训练（train）图像，3,368张查询（query）图像，以及19,732张图库（gallery）图像，数据集包含1501个ID，其中训练集包含751个ID的图像，图库集包含750个ID的图像。</p>
 <p><a href="https://pan.baidu.com/s/1ntIi2Op" target="_blank" rel="noopener">下载链接</a></p>
 <h3 id="DukeMTMC-reID"><a href="#DukeMTMC-reID" class="headerlink" title="DukeMTMC-reID"></a>DukeMTMC-reID</h3><blockquote>
 <p>Ristani E, Solera F, Zou R, et al. Performance measures and a data set for multi-target, multi-camera tracking[C]//European Conference on Computer Vision. Springer, Cham, 2016: 17-35.</p>
 </blockquote>
-<p>2017年Duke大学提出，采集自8个不同的摄像头，是DukeMTMC数据集的子集，DukeMTMC-reID包含了16,522张训练图像，2,228个查询图像，以及17,661张测试图像，数据集包含1404个ID，其中训练集包含702个ID的图像，测试集包含702个ID的图像。</p>
-<p><a href="https://pan.baidu.com/s/1jS0XM7Var5nQGcbf9xUztw" target="_blank" rel="noopener">下载链接</a>提取码:bhbh</p>
+<p>2017年Duke大学提出，采集自8个不同的摄像头，是DukeMTMC数据集的子集，DukeMTMC-reID包含了16,522张训练图像，2,228个查询图像，以及17,661张图库图像，数据集包含1404个ID，其中训练集包含702个ID的图像，图库集包含702个ID的图像。</p>
+<p><a href="https://pan.baidu.com/s/1jS0XM7Var5nQGcbf9xUztw" target="_blank" rel="noopener">下载链接</a>提取码：bhbh</p>
+<h3 id="CUHK03"><a href="#CUHK03" class="headerlink" title="CUHK03"></a>CUHK03</h3><blockquote>
+<p>Li W, Zhao R, Xiao T, et al. Deepreid: Deep filter pairing neural network for person re-identification[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 2014: 152-159.</p>
+</blockquote>
+<p>2014年香港中文大学大学提出，采集自10个不同的摄像头，CUHK03包含了13164 张图像，数据集包含1360个ID，其中有1160个ID属于训练集，100个ID属于验证集，100个ID属于测试集。</p>
+<p><a href="pan.baidu.com/s/1mgklxSc">下载链接</a>提取码：rhjq</p>
+<h2 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h2><h3 id="Rank-n"><a href="#Rank-n" class="headerlink" title="Rank-n"></a>Rank-n</h3><p>搜索结果中top-n张图有正确结果的概率。</p>
+<p>例如： query image为 <strong>m1</strong> ，在大小为100的gallery中搜索。</p>
+<p>如果识别结果是 <strong>m1</strong> 、m2、m3、m4、m5……，则此时rank-1的正确率为100%，rank-2的正确率也为100%，rank-5的正确率也为100%；<br>如果识别结果是m2、 <strong>m1</strong> 、m3、m4、m5……，则此时rank-1的正确率为0%，rank-2的正确率为100%，rank-5的正确率也为100%；<br>如果识别结果是m2、m3、m4、m5、 <strong>m1</strong> ……，则此时rank-1的正确率为0%，rank-2的正确率为0%，rank-5的正确率为100%<br>最后求得多个query的Rank-n取平均值。</p>
+<h3 id="CMC"><a href="#CMC" class="headerlink" title="CMC"></a>CMC</h3><p>全称为Cumulative Match Characteristic，将一个摄像头采集的图像用作查询集，将其余摄影机采集的图像用作图库集。对于图库集，为每个ID随机采样一张图像。对于查询集，将使用所有图像，获取每个图像的CMC曲线，这里的CMC曲线就是Rank-n与Accuracy的关系曲线，然后对它们进行平均。重复此评估过程100次，并将平均值提交为最终结果。</p>
+<h3 id="mAP"><a href="#mAP" class="headerlink" title="mAP"></a>mAP</h3><p>能够反应query image在gallery中所有正确的图片排在检索列表前面的程度，能更加全面的衡量ReID算法的性能。假设query image在gallery中有4张待查询图像，在检索的列表中排序分别为1、2、5、7，则ap为（1/1 + 2/2 + 3/5 + 4/7）/4=0.793。ap较大时，检索结果都相对靠前，最后对所有query的ap取平均值得到mAP。</p>
 
         </div>
         
