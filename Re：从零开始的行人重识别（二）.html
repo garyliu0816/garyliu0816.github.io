@@ -16,7 +16,7 @@
 <meta property="og:description" content="用分类来学习行人特征 Geng M, Wang Y, Xiang T, et al. Deep transfer learning for person re-identification[J]. arXiv preprint arXiv:1611.05244, 2016.  该论文的提出的模型是使用的ImageNet上训练好的模型进行初始化，然后对特征采用了两个子网络进行训练，一个是分类子网络，">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://garyliu0816.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-11-25T13:49:32.379Z">
+<meta property="og:updated_time" content="2019-11-25T15:53:40.633Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Re：从零开始的行人重识别（二）">
 <meta name="twitter:description" content="用分类来学习行人特征 Geng M, Wang Y, Xiang T, et al. Deep transfer learning for person re-identification[J]. arXiv preprint arXiv:1611.05244, 2016.  该论文的提出的模型是使用的ImageNet上训练好的模型进行初始化，然后对特征采用了两个子网络进行训练，一个是分类子网络，">
@@ -193,8 +193,7 @@ var _hmt = _hmt || [];
 <p>该论文的提出的模型是使用的ImageNet上训练好的模型进行初始化，然后对特征采用了两个子网络进行训练，一个是分类子网络，一个是验证子网络。分类子网络的输入是一张一张的图像，采用的损失函数是cross-entropy loss，这样使得类间特征的距离扩大。验证子网络的输入是成对的图像，值得注意的是这里采用的损失函数不是contrastive loss而是与之前一样的cross-entropy loss，参考作者给出的原因是他们发现用contrastive loss反而模型性能会变差，具体操作是将成对的图像特征相减，然后当做是二分类模型，输出相似或者不相似，这样能使类内特征的距离减小。</p>
 <a id="more"></a>
 <p>该模型的结构如下：</p>
-<div align="center">![deep Re-ID network architecture](https://garyliu0816.github.io/images/ReID_1.png)
-
+<p><img src="https://garyliu0816.github.io/images/ReID_1.png" alt="deep Re-ID network architecture"></p>
 <p>论文中的细节：</p>
 <ol>
 <li>base network采用的是在ImageNet上预训练过的GoogLeNet，发现效果和ResNet相当。</li>
@@ -202,7 +201,7 @@ var _hmt = _hmt || [];
 <li>提出一种Two-stepped fine-tuning，第一步是将模型冻结，将原GoogLeNet中的softmax层的节点数量替换为数据集类别数量，单独训练分类子网络。第二步是，解除冻结，对整个网络进行微调。</li>
 </ol>
 <p>除此之外，作者还讨论了无监督迁移学习方法之间效果的比较。这里讨论的是Self-training和Co-training。无监督的迁移学习用到的数据也是多个摄像头拍摄的行人，假设我们现在有A、B两个摄像头拍下的无标签的行人图像，A摄像头下的每个行人我们都赋予一个独特的ID，然后通过最近邻搜索找到B摄像头中与之最接近的行人并附上相同的标签，这个想法很简单，但是实现起来效果很差，因为很容易存在多个A摄像头中的行人都是B摄像头中的同一个行人与之最相似，而B摄像头中的某些行人无法与A摄像头中的行人ID产生对应关系。<br>而Co-training正好就能弥补Self-training的缺陷，主要流程是设计两个具有互补性质的模型，用模型1来标注所有的无标签数据，用模型1标注的数据来训练模型2，再用模型2来标注所有的无标签数据，用模型2标注的数据来训练模型1，循环直到所有的未标注数据都拥有标注为止。</p>
-</div>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">

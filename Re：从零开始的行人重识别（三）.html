@@ -16,7 +16,7 @@
 <meta property="og:description" content="度量学习之对比损失 Hadsell R, Chopra S, LeCun Y. Dimensionality reduction by learning an invariant mapping[C]//2006 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR’06). IEEE,">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://garyliu0816.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-11-25T15:25:34.620Z">
+<meta property="og:updated_time" content="2019-11-25T15:59:02.895Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Re：从零开始的行人重识别（三）">
 <meta name="twitter:description" content="度量学习之对比损失 Hadsell R, Chopra S, LeCun Y. Dimensionality reduction by learning an invariant mapping[C]//2006 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR’06). IEEE,">
@@ -169,7 +169,7 @@ var _hmt = _hmt || [];
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 455 个字)
+                    3 分钟 读完 (大约 447 个字)
                 </span>
                 
                 
@@ -190,17 +190,12 @@ var _hmt = _hmt || [];
             <h2 id="度量学习之对比损失"><a href="#度量学习之对比损失" class="headerlink" title="度量学习之对比损失"></a>度量学习之对比损失</h2><blockquote>
 <p>Hadsell R, Chopra S, LeCun Y. Dimensionality reduction by learning an invariant mapping[C]//2006 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR’06). IEEE, 2006, 2: 1735-1742.</p>
 </blockquote>
-<p>这篇论文早在2006年就被提出来，其中最重要的核心思想就是减小类内距离，扩大类间距离。因此作者提出一个对比损失（contrastive loss）函数：<br>$$<br>L(W,Y,\vec{X_1},\vec{X_2})=(1-Y)\frac{1}{2}{(D_W)}^2+(Y)\frac{1}{2}{(\max{0,m-D_W})}^2<br>$$<br>其中，<br>$$<br>D_{W}(\vec{X_1},\vec{X_2})={\left|G_W(\vec{X_1})-G_W(\vec{X_2})\right|}_2<br>$$</p>
+<p>这篇论文早在2006年就被提出来，其中最重要的核心思想就是减小类内距离，扩大类间距离。因此作者提出一个对比损失（contrastive loss）函数：<br>$$<br><img src="https://garyliu0816.github.io/images/ReID_4.png" alt="Triplet Loss"><br>$$<br>其中，<br>$$<br>D_{W}(\vec{X_1},\vec{X_2})={\left|G_W(\vec{X_1})-G_W(\vec{X_2})\right|}_2<br>$$</p>
 <a id="more"></a>
 <p>这个损失函数其实可以当做两部分来看，第一部分是当$\vec{X_1}$与$\vec{X_2}$的分类或者标签又或者是身份相同时$Y=0$，此时的函数就变成了，<br>$$<br>L_S(W,\vec{X_1},\vec{X_2})=\frac{1}{2}{(D_W)}^2<br>$$<br>此时$\vec{X_1}$与$\vec{X_2}$的距离越小损失函数越小，否则当$\vec{X_1}$与$\vec{X_2}$的分类不同时$Y=1$，那么此时的函数可以看做成，<br>$$<br>L_D(W,\vec{X_1},\vec{X_2})=\frac{1}{2}{(max{ 0,m-D_W })}^2<br>$$<br>此时$\vec{X_1}$与$\vec{X_2}$的距离越大损失函数越小。下图可以很好地表示Loss值与$D_W$的关系，其中蓝色的线表示$Y=1$时的损失变化曲线，红色的线表示$Y=0$时的损失变化曲线：</p>
-<div align="center">![Graph of the loss function L against the energy DW](https://garyliu0816.github.io/images/ReID_2.png)
-通过这种方式，对模型进行训练，就会使得模型中同一类的特征相互吸引，不同类的特征相互排斥，最后达到不同类之间的距离均大于同类之间的距离。以下是该算法应用在MNIST手写数字识别数据集上的可视化效果图： 
+<p><img src="https://garyliu0816.github.io/images/ReID_2.png" alt="Graph of the loss function L against the energy DW"><br>通过这种方式，对模型进行训练，就会使得模型中同一类的特征相互吸引，不同类的特征相互排斥，最后达到不同类之间的距离均大于同类之间的距离。以下是该算法应用在MNIST手写数字识别数据集上的可视化效果图： </p>
+<p><img src="https://garyliu0816.github.io/images/ReID_3.png" alt="placement of the test samples in output space"></p>
 
-
-<div align="center">![placement of the test samples in output space](https://garyliu0816.github.io/images/ReID_3.png)
-
-
-</div></div>
         </div>
         
         <div class="level is-size-7 is-uppercase">
