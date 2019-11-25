@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
 <title>Re：从零开始的行人重识别（二） - Garyliu&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -190,8 +190,11 @@ var _hmt = _hmt || [];
             <h2 id="用分类来学习行人特征"><a href="#用分类来学习行人特征" class="headerlink" title="用分类来学习行人特征"></a>用分类来学习行人特征</h2><blockquote>
 <p>Geng M, Wang Y, Xiang T, et al. Deep transfer learning for person re-identification[J]. arXiv preprint arXiv:1611.05244, 2016.</p>
 </blockquote>
-<p>该论文的提出的模型是使用的ImageNet上训练好的模型进行初始化，然后对特征采用了两个子网络进行训练，一个是分类子网络，一个是验证子网络。分类子网络的输入是一张一张的图像，采用的损失函数是cross-entropy loss，这样使得类间特征的距离扩大。验证子网络的输入是成对的图像，值得注意的是这里采用的损失函数不是contrastive loss而是与之前一样的cross-entropy loss，参考作者给出的原因是他们发现用contrastive loss反而模型性能会变差，具体操作是将成对的图像特征相减，然后当做是二分类模型，输出相似或者不相似，这样能使类内特征的距离减小。<br><a id="more"></a><br>该模型的结构如下：</p>
-<p><div align="center"><img src="https://garyliu0816.github.io/images/ReID_1.png" alt="deep Re-ID network architecture"></div></p>
+<p>该论文的提出的模型是使用的ImageNet上训练好的模型进行初始化，然后对特征采用了两个子网络进行训练，一个是分类子网络，一个是验证子网络。分类子网络的输入是一张一张的图像，采用的损失函数是cross-entropy loss，这样使得类间特征的距离扩大。验证子网络的输入是成对的图像，值得注意的是这里采用的损失函数不是contrastive loss而是与之前一样的cross-entropy loss，参考作者给出的原因是他们发现用contrastive loss反而模型性能会变差，具体操作是将成对的图像特征相减，然后当做是二分类模型，输出相似或者不相似，这样能使类内特征的距离减小。</p>
+<a id="more"></a>
+<p>该模型的结构如下：</p>
+<div align="center">![deep Re-ID network architecture](https://garyliu0816.github.io/images/ReID_1.png)
+
 <p>论文中的细节：</p>
 <ol>
 <li>base network采用的是在ImageNet上预训练过的GoogLeNet，发现效果和ResNet相当。</li>
@@ -199,7 +202,7 @@ var _hmt = _hmt || [];
 <li>提出一种Two-stepped fine-tuning，第一步是将模型冻结，将原GoogLeNet中的softmax层的节点数量替换为数据集类别数量，单独训练分类子网络。第二步是，解除冻结，对整个网络进行微调。</li>
 </ol>
 <p>除此之外，作者还讨论了无监督迁移学习方法之间效果的比较。这里讨论的是Self-training和Co-training。无监督的迁移学习用到的数据也是多个摄像头拍摄的行人，假设我们现在有A、B两个摄像头拍下的无标签的行人图像，A摄像头下的每个行人我们都赋予一个独特的ID，然后通过最近邻搜索找到B摄像头中与之最接近的行人并附上相同的标签，这个想法很简单，但是实现起来效果很差，因为很容易存在多个A摄像头中的行人都是B摄像头中的同一个行人与之最相似，而B摄像头中的某些行人无法与A摄像头中的行人ID产生对应关系。<br>而Co-training正好就能弥补Self-training的缺陷，主要流程是设计两个具有互补性质的模型，用模型1来标注所有的无标签数据，用模型1标注的数据来训练模型2，再用模型2来标注所有的无标签数据，用模型2标注的数据来训练模型1，循环直到所有的未标注数据都拥有标注为止。</p>
-
+</div>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -1130,5 +1133,5 @@ document.addEventListener('DOMContentLoaded', function () {
 <link rel="stylesheet" href="/css/search.css">
 <link rel="stylesheet" href="/css/insight.css">
     
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300,"superSample":2,"hOffset":-80,"vOffset":-140},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"live2d-widget-model-hijiki"},"display":{"position":"right","width":150,"height":300,"superSample":2,"hOffset":-80,"vOffset":-140},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

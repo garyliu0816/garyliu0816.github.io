@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
 <title>CADA-VAE论文阅读笔记 - Garyliu&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -190,7 +190,9 @@ var _hmt = _hmt || [];
             <h2 id="文中涉及的概念"><a href="#文中涉及的概念" class="headerlink" title="文中涉及的概念"></a>文中涉及的概念</h2><h3 id="Few-shot-learning"><a href="#Few-shot-learning" class="headerlink" title="Few-shot learning"></a>Few-shot learning</h3><p>每个类只有很少的可见例子（一般小于10），训练一个模型对其分类。</p>
 <h3 id="Zero-shot-learning"><a href="#Zero-shot-learning" class="headerlink" title="Zero-shot learning"></a>Zero-shot learning</h3><p>现有一些可见的例子和一些不可见的例子，使用可见的例子训练模型能够对不可见的例子进行分类。</p>
 <h3 id="Generalized-zero-shot-learning"><a href="#Generalized-zero-shot-learning" class="headerlink" title="Generalized zero-shot learning"></a>Generalized zero-shot learning</h3><p>现有一些可见的例子和一些不可见的例子，使用可见的例子训练模型能够对所有的例子进行分类。</p>
-<h3 id="Multi-modal-alignment"><a href="#Multi-modal-alignment" class="headerlink" title="Multi-modal alignment"></a>Multi-modal alignment</h3><p>多模态对齐，寻找不同模态（如图像、文字、语音）中的属性的对应关系，文中主要是指多个VAE中的latent space的属性的对齐。<br><a id="more"></a></p>
+<h3 id="Multi-modal-alignment"><a href="#Multi-modal-alignment" class="headerlink" title="Multi-modal alignment"></a>Multi-modal alignment</h3><p>多模态对齐，寻找不同模态（如图像、文字、语音）中的属性的对应关系，文中主要是指多个VAE中的latent space的属性的对齐。</p>
+<a id="more"></a>
+
 <h2 id="本文主要的工作贡献"><a href="#本文主要的工作贡献" class="headerlink" title="本文主要的工作贡献"></a>本文主要的工作贡献</h2><ul>
 <li>训练了多个VAE从不同模态，如图像和类属性，中加密和解密特征，得到隐特征</li>
 <li>通过对齐参数分布和减小跨模态重构损失来使隐特征多模态对齐</li>
@@ -213,7 +215,7 @@ var _hmt = _hmt || [];
 <h4 id="交叉对齐损失"><a href="#交叉对齐损失" class="headerlink" title="交叉对齐损失"></a>交叉对齐损失</h4><p>实际上就是将一张图像x与其类属性分别通过编码器E_1、E_2后得到的z_1、z_2交叉通过解码器D_1、D_2得到的x’计算欧式距离</p>
 <p>$$loss_{CA} = \sum^M_i\sum^M_{j\not={i}}\left|x^{(j)}-D_j(E_i(x^{(i)}))\right|$$</p>
 <h4 id="分布对齐损失"><a href="#分布对齐损失" class="headerlink" title="分布对齐损失"></a>分布对齐损失</h4><p>这里实际上是在计算z_1、z_2的概率分布的相似程度，采用的是Wasserstein距离：</p>
-<p>$$<br>W_{ij}=\left(\left|\mu_i-\mu_j\right|^2_2+\left|\sum\nolimits^{1\over2}_i-\sum\nolimits^{1\over2}<em>j\right|^2</em>{Frobenius}\right)^{1\over2}<br>$$</p>
+<p>$$<br>W_{ij}=\left(\left|\mu_i-\mu_j\right|^2_2+\left|\sum\nolimits^{1\over2}<em>i-\sum\nolimits^{1\over2}_j\right|^2</em>{Frobenius}\right)^{1\over2}<br>$$</p>
 <p>而分布对齐损失就是所有组合情况的Wasserstein距离之和：</p>
 <p>$$loss_{DA}=\sum^M_i\sum^M_{j\not=i}W_{ij}$$</p>
 <h3 id="整体的损失函数"><a href="#整体的损失函数" class="headerlink" title="整体的损失函数"></a>整体的损失函数</h3><p>就是上述三个损失函数的加权求和：</p>
@@ -1150,5 +1152,5 @@ document.addEventListener('DOMContentLoaded', function () {
 <link rel="stylesheet" href="/css/search.css">
 <link rel="stylesheet" href="/css/insight.css">
     
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300,"superSample":2,"hOffset":-80,"vOffset":-140},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"live2d-widget-model-hijiki"},"display":{"position":"right","width":150,"height":300,"superSample":2,"hOffset":-80,"vOffset":-140},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

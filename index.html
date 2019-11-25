@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
 <title>Garyliu&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -186,20 +186,26 @@ var _hmt = _hmt || [];
 <p> Schroff F, Kalenichenko D, Philbin J. Facenet: A unified embedding for face recognition and clustering[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 2015: 815-823. </p>
 </blockquote>
 <p>这篇论文虽然是是用在人脸识别上的，但是行人重识别中的一个影响力十分大损失函数——triplet loss就是在这篇论文中提出的，之前用到的对比损失（contrastive loss）能够起到缩小类内距离，增大类间距离的作用，从而通过距离判断两类相似与否。但是contrastive loss有一个痛点，就是我们无法约束类间距离和类内距离的大小，虽然缩小了类内距离，也扩大了类间距离，但是类内距离仍然可能比类间距离大，这就是contrastive loss的局限性。由此作者想到增加一个类内距离比类间距离小的约束，于是三元组诞生了，如下图所示：</p>
-<p><div align="center"><img src="https://garyliu0816.github.io/images/ReID_4.png" alt="Triplet Loss"></div></p>
+<div align="center">![Triplet Loss](https://garyliu0816.github.io/images/ReID_4.png)
+
 <p>这里的Anchor指的就是我们的查询图像，Positive是与Anchor一类的图像，Negative是与Anchor不同类的图像，将这三种图像通过CNN提取得到的特征计算欧式距离，放入损失函数中进行计算，就得到了我们的triplet loss：</p>
 <p>$$<br>L = \sum_\limits{i}^{N}{[{\left| f(x_{i}^{a})-f(x_{i}^{p}) \right |}<em>{2}^{2}-{\left| f(x</em>{i}^{a})-f(x_{i}^{n}) \right |}<em>{2}^{2} + \alpha]}</em>{+}<br>$$</p>
 <p>值得注意这里的loss设置了一个超参数$\alpha$，这个参数的作用是要让类内距离不止比类间距离小，还要小一个$\alpha$的距离。</p>
 <p>这个损失函数的基本思想是比较浅显易懂的，但是要让这个损失函数运作起来才是重点。在预训练好的数据集上，由于大多数的类内图像的距离就已经比类间图像的距离小了，因此损失值计算得到的就是0，则模型参数就不会发生更新，如果采用暴力的方式穷举所有可能，那么会浪费大量的算力在无用的计算上，这里的计算复杂度大致为$O(n^5)$，所以是无法穷举的，那么这里作者提出一个Generate triplets Online的方法。也就是在每一批数据中找到一个Positive使之与Anchor之间的距离最大同时再找到一个Negative使之与Anchor之间的距离最小，这样的三元组往往是有效的。</p>
 <p>最后作者还讨论了一下各种因素对模型的影响：</p>
 <p>图像质量：</p>
-<p><div align="center"><img src="https://garyliu0816.github.io/images/ReID_5.png" alt="Image Quality"></div></p>
-<p>嵌入维度：</p>
-<p><div align="center"><img src="https://garyliu0816.github.io/images/ReID_6.png" alt="Embedding Dimensionality"></div></p>
-<p>数据集大小：</p>
-<p><div align="center"><img src="https://garyliu0816.github.io/images/ReID_7.png" alt="Training Data Size"></div></p>
-<p>可以从上图得知嵌入维度在128时效果最好，除此之外，图像质量（尺寸）和数据集大小都是越大好。</p>
+<div align="center">![Image Quality](https://garyliu0816.github.io/images/ReID_5.png)
 
+<p>嵌入维度：</p>
+<div align="center">![Embedding Dimensionality](https://garyliu0816.github.io/images/ReID_6.png)
+
+<p>数据集大小：</p>
+<div align="center">![Training Data Size](https://garyliu0816.github.io/images/ReID_7.png)
+
+
+
+<p>可以从上图得知嵌入维度在128时效果最好，除此之外，图像质量（尺寸）和数据集大小都是越大好。</p>
+</div></div></div></div>
         </div>
         
         
@@ -246,7 +252,7 @@ var _hmt = _hmt || [];
             <h2 id="度量学习之对比损失"><a href="#度量学习之对比损失" class="headerlink" title="度量学习之对比损失"></a>度量学习之对比损失</h2><blockquote>
 <p>Hadsell R, Chopra S, LeCun Y. Dimensionality reduction by learning an invariant mapping[C]//2006 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR’06). IEEE, 2006, 2: 1735-1742.</p>
 </blockquote>
-<p>这篇论文早在2006年就被提出来，其中最重要的核心思想就是减小类内距离，扩大类间距离。因此作者提出一个对比损失（contrastive loss）函数：<br>$$<br>L(W,Y,\vec{X_1},\vec{X_2})=(1-Y)\frac{1}{2}{(D_W)}^2+(Y)\frac{1}{2}{(\max{0,m-D_W})}^2<br>$$<br>其中，<br>$$<br>D_{W}(\vec{X_1},\vec{X_2})={\left|G_W(\vec{X_1})-G_W(\vec{X_2})\right|}_2<br>$$<br></p>
+<p>这篇论文早在2006年就被提出来，其中最重要的核心思想就是减小类内距离，扩大类间距离。因此作者提出一个对比损失（contrastive loss）函数：<br>$$<br>L(W,Y,\vec{X_1},\vec{X_2})=(1-Y)\frac{1}{2}{(D_W)}^2+(Y)\frac{1}{2}{(\max{0,m-D_W})}^2<br>$$<br>其中，<br>$$<br>D_{W}(\vec{X_1},\vec{X_2})={\left|G_W(\vec{X_1})-G_W(\vec{X_2})\right|}_2<br>$$</p>
         </div>
         
         
@@ -301,7 +307,7 @@ var _hmt = _hmt || [];
             <h2 id="用分类来学习行人特征"><a href="#用分类来学习行人特征" class="headerlink" title="用分类来学习行人特征"></a>用分类来学习行人特征</h2><blockquote>
 <p>Geng M, Wang Y, Xiang T, et al. Deep transfer learning for person re-identification[J]. arXiv preprint arXiv:1611.05244, 2016.</p>
 </blockquote>
-<p>该论文的提出的模型是使用的ImageNet上训练好的模型进行初始化，然后对特征采用了两个子网络进行训练，一个是分类子网络，一个是验证子网络。分类子网络的输入是一张一张的图像，采用的损失函数是cross-entropy loss，这样使得类间特征的距离扩大。验证子网络的输入是成对的图像，值得注意的是这里采用的损失函数不是contrastive loss而是与之前一样的cross-entropy loss，参考作者给出的原因是他们发现用contrastive loss反而模型性能会变差，具体操作是将成对的图像特征相减，然后当做是二分类模型，输出相似或者不相似，这样能使类内特征的距离减小。<br></p>
+<p>该论文的提出的模型是使用的ImageNet上训练好的模型进行初始化，然后对特征采用了两个子网络进行训练，一个是分类子网络，一个是验证子网络。分类子网络的输入是一张一张的图像，采用的损失函数是cross-entropy loss，这样使得类间特征的距离扩大。验证子网络的输入是成对的图像，值得注意的是这里采用的损失函数不是contrastive loss而是与之前一样的cross-entropy loss，参考作者给出的原因是他们发现用contrastive loss反而模型性能会变差，具体操作是将成对的图像特征相减，然后当做是二分类模型，输出相似或者不相似，这样能使类内特征的距离减小。</p>
         </div>
         
         
@@ -353,7 +359,7 @@ var _hmt = _hmt || [];
             
         </h1>
         <div class="content">
-            <h2 id="绪言"><a href="#绪言" class="headerlink" title="绪言"></a>绪言</h2><p>马上研二要开题了，提前通过blog的方式先把研究思路理清楚，也算是重新温习一下学习过程中遇到的问题吧，希望能给自己带来一些新的思路，同时帮助一些刚刚接触reID的同学入门（<del>虽然应该没什么人会看</del>），如有勘误可以提出来，我会及时改正的。<br></p>
+            <h2 id="绪言"><a href="#绪言" class="headerlink" title="绪言"></a>绪言</h2><p>马上研二要开题了，提前通过blog的方式先把研究思路理清楚，也算是重新温习一下学习过程中遇到的问题吧，希望能给自己带来一些新的思路，同时帮助一些刚刚接触reID的同学入门（<del>虽然应该没什么人会看</del>），如有勘误可以提出来，我会及时改正的。</p>
         </div>
         
         
@@ -410,7 +416,7 @@ var _hmt = _hmt || [];
 <li>discriminator（判别器）是如何从与generator（生成器）的联合训练中收益的</li>
 <li>为什么一个好的classification（分类）效果和一个好的生成器不能同时获得</li>
 </ol>
-<h3 id="本质目标"><a href="#本质目标" class="headerlink" title="本质目标"></a>本质目标</h3><p>为了更好的寻找能正确分类的low-density boundary（低密度边界）<br></p>
+<h3 id="本质目标"><a href="#本质目标" class="headerlink" title="本质目标"></a>本质目标</h3><p>为了更好的寻找能正确分类的low-density boundary（低密度边界）</p>
         </div>
         
         
@@ -465,7 +471,7 @@ var _hmt = _hmt || [];
             <h2 id="文中涉及的概念"><a href="#文中涉及的概念" class="headerlink" title="文中涉及的概念"></a>文中涉及的概念</h2><h3 id="Few-shot-learning"><a href="#Few-shot-learning" class="headerlink" title="Few-shot learning"></a>Few-shot learning</h3><p>每个类只有很少的可见例子（一般小于10），训练一个模型对其分类。</p>
 <h3 id="Zero-shot-learning"><a href="#Zero-shot-learning" class="headerlink" title="Zero-shot learning"></a>Zero-shot learning</h3><p>现有一些可见的例子和一些不可见的例子，使用可见的例子训练模型能够对不可见的例子进行分类。</p>
 <h3 id="Generalized-zero-shot-learning"><a href="#Generalized-zero-shot-learning" class="headerlink" title="Generalized zero-shot learning"></a>Generalized zero-shot learning</h3><p>现有一些可见的例子和一些不可见的例子，使用可见的例子训练模型能够对所有的例子进行分类。</p>
-<h3 id="Multi-modal-alignment"><a href="#Multi-modal-alignment" class="headerlink" title="Multi-modal alignment"></a>Multi-modal alignment</h3><p>多模态对齐，寻找不同模态（如图像、文字、语音）中的属性的对应关系，文中主要是指多个VAE中的latent space的属性的对齐。<br></p>
+<h3 id="Multi-modal-alignment"><a href="#Multi-modal-alignment" class="headerlink" title="Multi-modal alignment"></a>Multi-modal alignment</h3><p>多模态对齐，寻找不同模态（如图像、文字、语音）中的属性的对应关系，文中主要是指多个VAE中的latent space的属性的对齐。</p>
         </div>
         
         
@@ -519,7 +525,7 @@ var _hmt = _hmt || [];
         <div class="content">
             <h2 id="精准率"><a href="#精准率" class="headerlink" title="精准率"></a>精准率</h2><p>模型输出的结果是正确的概率</p>
 <h2 id="召回率"><a href="#召回率" class="headerlink" title="召回率"></a>召回率</h2><p>模型中原本应该输出的结果是实际输出的概率</p>
-<h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><p><div align="center"><img src="https://garyliu0816.github.io/images/confusion_matrix.png" alt="混淆矩阵"><br></div></p>
+<h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><div align="center">![混淆矩阵](https://garyliu0816.github.io/images/confusion_matrix.png)</div>
         </div>
         
         
@@ -575,40 +581,39 @@ var _hmt = _hmt || [];
 <thead>
 <tr>
 <th>tensorflow</th>
-<th style="text-align:right">cuda</th>
-<th style="text-align:right">python</th>
-<th style="text-align:right">cudnn</th>
-<th style="text-align:right">visual C++ redistributable</th>
-<th style="text-align:right">build tools</th>
+<th align="right">cuda</th>
+<th align="right">python</th>
+<th align="right">cudnn</th>
+<th align="right">visual C++ redistributable</th>
+<th align="right">build tools</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>gpu-1.13.1</td>
-<td style="text-align:right">10.1</td>
-<td style="text-align:right">3.7</td>
-<td style="text-align:right">7</td>
-<td style="text-align:right">2015 update 3</td>
-<td style="text-align:right">2015 Update 3</td>
+<td align="right">10.1</td>
+<td align="right">3.7</td>
+<td align="right">7</td>
+<td align="right">2015 update 3</td>
+<td align="right">2015 Update 3</td>
 </tr>
 <tr>
 <td>gpu-1.13.1</td>
-<td style="text-align:right">10.0</td>
-<td style="text-align:right">3.6</td>
-<td style="text-align:right">7</td>
-<td style="text-align:right">2015 update 3</td>
-<td style="text-align:right">2015 Update 3</td>
+<td align="right">10.0</td>
+<td align="right">3.6</td>
+<td align="right">7</td>
+<td align="right">2015 update 3</td>
+<td align="right">2015 Update 3</td>
 </tr>
 <tr>
 <td>gpu-1.12.0</td>
-<td style="text-align:right">9.0</td>
-<td style="text-align:right">3.5</td>
-<td style="text-align:right">7</td>
-<td style="text-align:right">2015 update 3</td>
-<td style="text-align:right">2015 Update 3</td>
+<td align="right">9.0</td>
+<td align="right">3.5</td>
+<td align="right">7</td>
+<td align="right">2015 update 3</td>
+<td align="right">2015 Update 3</td>
 </tr>
-</tbody>
-</table>
+<tr>
+<td></td></tr></tbody></table>
         </div>
         
         
@@ -1568,5 +1573,5 @@ document.addEventListener('DOMContentLoaded', function () {
 <link rel="stylesheet" href="/css/search.css">
 <link rel="stylesheet" href="/css/insight.css">
     
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300,"superSample":2,"hOffset":-80,"vOffset":-140},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"live2d-widget-model-hijiki"},"display":{"position":"right","width":150,"height":300,"superSample":2,"hOffset":-80,"vOffset":-140},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

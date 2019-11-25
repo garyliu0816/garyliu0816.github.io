@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
 <title>Re：从零开始的行人重识别（一） - Garyliu&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -187,7 +187,8 @@ var _hmt = _hmt || [];
             
         </h1>
         <div class="content">
-            <h2 id="绪言"><a href="#绪言" class="headerlink" title="绪言"></a>绪言</h2><p>马上研二要开题了，提前通过blog的方式先把研究思路理清楚，也算是重新温习一下学习过程中遇到的问题吧，希望能给自己带来一些新的思路，同时帮助一些刚刚接触reID的同学入门（<del>虽然应该没什么人会看</del>），如有勘误可以提出来，我会及时改正的。<br><a id="more"></a></p>
+            <h2 id="绪言"><a href="#绪言" class="headerlink" title="绪言"></a>绪言</h2><p>马上研二要开题了，提前通过blog的方式先把研究思路理清楚，也算是重新温习一下学习过程中遇到的问题吧，希望能给自己带来一些新的思路，同时帮助一些刚刚接触reID的同学入门（<del>虽然应该没什么人会看</del>），如有勘误可以提出来，我会及时改正的。</p>
+<a id="more"></a>
 <h2 id="什么是行人重识别？"><a href="#什么是行人重识别？" class="headerlink" title="什么是行人重识别？"></a>什么是行人重识别？</h2><p>行人重识别的是属于计算机视觉下的重要的也是当前比较困难的任务。它主要要解决问题是如何在不同的摄像头下找到相同的一个人，这种问题其实可以看做是一个图像检索的问题，即是通过一张行人在一个摄像头下的图像（或视频）作为检索目标，在其余摄像头中找到与之最相似的行人。</p>
 <h2 id="为什么需要行人重识别？"><a href="#为什么需要行人重识别？" class="headerlink" title="为什么需要行人重识别？"></a>为什么需要行人重识别？</h2><p>主要是由于当前用于行人检测的摄像头大多是固定位置的局限性，当行人离开摄像头后，就无法继续追踪新摄像头下的行人，当行人重识别与行人检测技术相结合后，就可以弥补缺陷。行人重识别广泛应用于智能视频监控、智能安保等领域。</p>
 <h2 id="行人重识别问题的难点"><a href="#行人重识别问题的难点" class="headerlink" title="行人重识别问题的难点"></a>行人重识别问题的难点</h2><ol>
@@ -1146,5 +1147,5 @@ document.addEventListener('DOMContentLoaded', function () {
 <link rel="stylesheet" href="/css/search.css">
 <link rel="stylesheet" href="/css/insight.css">
     
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300,"superSample":2,"hOffset":-80,"vOffset":-140},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"live2d-widget-model-hijiki"},"display":{"position":"right","width":150,"height":300,"superSample":2,"hOffset":-80,"vOffset":-140},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
