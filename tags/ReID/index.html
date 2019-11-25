@@ -169,6 +169,65 @@ var _hmt = _hmt || [];
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-25T12:52:04.000Z">2019-11-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/教程/">教程</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分钟 读完 (大约 768 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/Re：从零开始的行人重识别（四）.html">Re：从零开始的行人重识别（四）</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="度量学习之三元组损失"><a href="#度量学习之三元组损失" class="headerlink" title="度量学习之三元组损失"></a>度量学习之三元组损失</h2><blockquote>
+<p> Schroff F, Kalenichenko D, Philbin J. Facenet: A unified embedding for face recognition and clustering[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 2015: 815-823. </p>
+</blockquote>
+<p>这篇论文虽然是是用在人脸识别上的，但是行人重识别中的一个影响力十分大损失函数——triplet loss就是在这篇论文中提出的，之前用到的对比损失（contrastive loss）能够起到缩小类内距离，增大类间距离的作用，从而通过距离判断两类相似与否。但是contrastive loss有一个痛点，就是我们无法约束类间距离和类内距离的大小，虽然缩小了类内距离，也扩大了类间距离，但是类内距离仍然可能比类间距离大，这就是contrastive loss的局限性。由此作者想到增加一个类内距离比类间距离小的约束，于是三元组诞生了，如下图所示：</p>
+<p><div align="center"><img src="https://garyliu0816.github.io/images/ReID_4.png" alt="Triplet Loss"></div></p>
+<p>这里的Anchor指的就是我们的查询图像，Positive是与Anchor一类的图像，Negative是与Anchor不同类的图像，将这三种图像通过CNN提取得到的特征计算欧式距离，放入损失函数中进行计算，就得到了我们的triplet loss：<br>$$<br>L=\sum\limits_i^N{[{\left|f(x_i^a)-f(x_i^p)\right|}_2^2-{\left|f(x_i^a)-f(x_i^n)\right|}<em>2^2+\alpha]</em>+}<br>$$<br>值得注意这里的loss设置了一个超参数$\alpha$，这个参数的作用是要让类内距离不止比类间距离小，还要小一个$\alpha$的距离。</p>
+<p>这个损失函数的基本思想是比较浅显易懂的，但是要让这个损失函数运作起来才是重点。在预训练好的数据集上，由于大多数的类内图像的距离就已经比类间图像的距离小了，因此损失值计算得到的就是0，则模型参数就不会发生更新，如果采用暴力的方式穷举所有可能，那么会浪费大量的算力在无用的计算上，这里的计算复杂度大致为$O(n^5)$，所以是无法穷举的，那么这里作者提出一个Generate triplets Online的方法。也就是在每一批数据中找到一个Positive使之与Anchor之间的距离最大同时再找到一个Negative使之与Anchor之间的距离最小，这样的三元组往往是有效的。</p>
+<p>最后作者还讨论了一下各种因素对模型的影响：</p>
+<p>图像质量：</p>
+<p><div align="center"><img src="https://garyliu0816.github.io/images/ReID_5.png" alt="Image Quality"></div></p>
+<p>嵌入维度：</p>
+<p><div align="center"><img src="https://garyliu0816.github.io/images/ReID_6.png" alt="Embedding Dimensionality"></div></p>
+<p>数据集大小：</p>
+<p><div align="center"><img src="https://garyliu0816.github.io/images/ReID_7.png" alt="Training Data Size"></div></p>
+<p>可以从上图得知嵌入维度在128时效果最好，除此之外，图像质量（尺寸）和数据集大小都是越大好。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-11-22T13:00:09.000Z">2019-11-22</time>
                 
                 <div class="level-item">
@@ -179,7 +238,7 @@ var _hmt = _hmt || [];
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 451 个字)
+                    3 分钟 读完 (大约 455 个字)
                 </span>
                 
                 
@@ -195,7 +254,7 @@ var _hmt = _hmt || [];
             <h2 id="度量学习之对比损失"><a href="#度量学习之对比损失" class="headerlink" title="度量学习之对比损失"></a>度量学习之对比损失</h2><blockquote>
 <p>Hadsell R, Chopra S, LeCun Y. Dimensionality reduction by learning an invariant mapping[C]//2006 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR’06). IEEE, 2006, 2: 1735-1742.</p>
 </blockquote>
-<p>这篇论文早在2006年就被提出来，其中最重要的核心思想就是减小类内距离，扩大类间距离。因此作者提出一个对比损失函数：<br>$$<br>L(W,Y,\vec{X_1},\vec{X_2})=(1-Y)\frac{1}{2}{(D_W)}^2+(Y)\frac{1}{2}{(\max{0,m-D_W})}^2<br>$$<br>其中，<br>$$<br>D_{W}(\vec{X_1},\vec{X_2})={\left|G_W(\vec{X_1})-G_W(\vec{X_2})\right|}_2<br>$$<br></p>
+<p>这篇论文早在2006年就被提出来，其中最重要的核心思想就是减小类内距离，扩大类间距离。因此作者提出一个对比损失（contrastive loss）函数：<br>$$<br>L(W,Y,\vec{X_1},\vec{X_2})=(1-Y)\frac{1}{2}{(D_W)}^2+(Y)\frac{1}{2}{(\max{0,m-D_W})}^2<br>$$<br>其中，<br>$$<br>D_{W}(\vec{X_1},\vec{X_2})={\left|G_W(\vec{X_1})-G_W(\vec{X_2})\right|}_2<br>$$<br></p>
         </div>
         
         
@@ -370,7 +429,7 @@ var _hmt = _hmt || [];
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        9
+                        10
                     </p>
                 </div>
             </div>
@@ -501,7 +560,7 @@ var _hmt = _hmt || [];
                 <span class="level-item">教程</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/环境配置/">
@@ -523,7 +582,7 @@ var _hmt = _hmt || [];
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/ReID/" style="font-size: 20px;">ReID</a> <a href="/tags/anaconda/" style="font-size: 10px;">anaconda</a> <a href="/tags/cuda/" style="font-size: 10px;">cuda</a> <a href="/tags/deep-learning/" style="font-size: 20px;">deep learning</a> <a href="/tags/few-shot-learning/" style="font-size: 10px;">few-shot learning</a> <a href="/tags/gpu/" style="font-size: 10px;">gpu</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/semi-supervised-learning/" style="font-size: 10px;">semi-supervised learning</a> <a href="/tags/tensorflow/" style="font-size: 10px;">tensorflow</a> <a href="/tags/zero-shot-learning/" style="font-size: 10px;">zero-shot learning</a>
+        <a href="/tags/ReID/" style="font-size: 20px;">ReID</a> <a href="/tags/anaconda/" style="font-size: 10px;">anaconda</a> <a href="/tags/cuda/" style="font-size: 10px;">cuda</a> <a href="/tags/deep-learning/" style="font-size: 15px;">deep learning</a> <a href="/tags/few-shot-learning/" style="font-size: 10px;">few-shot learning</a> <a href="/tags/gpu/" style="font-size: 10px;">gpu</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/semi-supervised-learning/" style="font-size: 10px;">semi-supervised learning</a> <a href="/tags/tensorflow/" style="font-size: 10px;">tensorflow</a> <a href="/tags/zero-shot-learning/" style="font-size: 10px;">zero-shot learning</a>
     </div>
 </div>
 
@@ -537,6 +596,19 @@ var _hmt = _hmt || [];
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T12:52:04.000Z">2019-11-25</time></div>
+                    <a href="/Re：从零开始的行人重识别（四）.html" class="has-link-black-ter is-size-6">Re：从零开始的行人重识别（四）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/教程/">教程</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -590,19 +662,6 @@ var _hmt = _hmt || [];
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-07T10:42:31.000Z">2019-05-07</time></div>
-                    <a href="/CADA-VAE论文阅读笔记.html" class="has-link-black-ter is-size-6">CADA-VAE论文阅读笔记</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/学习笔记/">学习笔记</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -621,7 +680,7 @@ var _hmt = _hmt || [];
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -664,7 +723,7 @@ var _hmt = _hmt || [];
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ReID/">
                         <span class="tag">ReID</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -765,6 +824,19 @@ var _hmt = _hmt || [];
             
             <div class="media-content">
                 <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T12:52:04.000Z">2019-11-25</time></div>
+                    <a href="/Re：从零开始的行人重识别（四）.html" class="has-link-black-ter is-size-6">Re：从零开始的行人重识别（四）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/教程/">教程</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-22T13:00:09.000Z">2019-11-22</time></div>
                     <a href="/Re：从零开始的行人重识别（三）.html" class="has-link-black-ter is-size-6">Re：从零开始的行人重识别（三）</a>
                     <p class="is-size-7 is-uppercase">
@@ -813,19 +885,6 @@ var _hmt = _hmt || [];
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-07T10:42:31.000Z">2019-05-07</time></div>
-                    <a href="/CADA-VAE论文阅读笔记.html" class="has-link-black-ter is-size-6">CADA-VAE论文阅读笔记</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/学习笔记/">学习笔记</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -844,7 +903,7 @@ var _hmt = _hmt || [];
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -887,7 +946,7 @@ var _hmt = _hmt || [];
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ReID/">
                         <span class="tag">ReID</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 

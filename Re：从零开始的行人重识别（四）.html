@@ -2,30 +2,31 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>分类 - Garyliu&#39;s Blog</title>
+<title>Re：从零开始的行人重识别（四） - Garyliu&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="A space to record my issue.">
-<meta name="keywords" content="python,anaconda,ReID,markdown,tensorflow,gpu,cuda,deep learning,zero-shot learning,few-shot learning,semi-supervised learning">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Garyliu&#39;s Blog">
-<meta property="og:url" content="https://garyliu0816.github.io/categories/index.html">
+    <meta name="description" content="度量学习之三元组损失  Schroff F, Kalenichenko D, Philbin J. Facenet: A unified embedding for face recognition and clustering[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 20">
+<meta name="keywords" content="ReID">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Re：从零开始的行人重识别（四）">
+<meta property="og:url" content="https://garyliu0816.github.io/Re：从零开始的行人重识别（四）.html">
 <meta property="og:site_name" content="Garyliu&#39;s Blog">
-<meta property="og:description" content="A space to record my issue.">
+<meta property="og:description" content="度量学习之三元组损失  Schroff F, Kalenichenko D, Philbin J. Facenet: A unified embedding for face recognition and clustering[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 20">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://garyliu0816.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-11-25T13:50:26.642Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Garyliu&#39;s Blog">
-<meta name="twitter:description" content="A space to record my issue.">
+<meta name="twitter:title" content="Re：从零开始的行人重识别（四）">
+<meta name="twitter:description" content="度量学习之三元组损失  Schroff F, Kalenichenko D, Philbin J. Facenet: A unified embedding for face recognition and clustering[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 20">
 <meta name="twitter:image" content="https://garyliu0816.github.io/images/og_image.png">
 
 
 
 
 
-<link rel="alternative" href="/atom.xml" title="Garyliu&#39;s Blog" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="Re：从零开始的行人重识别（四）" type="application/atom+xml">
 
 
 
@@ -118,7 +119,7 @@ var _hmt = _hmt || [];
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Garyliu&#39;s Blog" height="28">
+                <img src="/images/logo.svg" alt="Re：从零开始的行人重识别（四）" height="28">
             
             </a>
         </div>
@@ -130,7 +131,7 @@ var _hmt = _hmt || [];
                 
                 <a class="navbar-item" href="/archives">归档</a>
                 
-                <a class="navbar-item is-active" href="/categories">分类</a>
+                <a class="navbar-item" href="/categories">分类</a>
                 
                 <a class="navbar-item" href="/tags">标签</a>
                 
@@ -152,43 +153,147 @@ var _hmt = _hmt || [];
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card widget">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-25T12:52:04.000Z">2019-11-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/教程/">教程</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分钟 读完 (大约 768 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Re：从零开始的行人重识别（四）
+            
+        </h1>
+        <div class="content">
+            <h2 id="度量学习之三元组损失"><a href="#度量学习之三元组损失" class="headerlink" title="度量学习之三元组损失"></a>度量学习之三元组损失</h2><blockquote>
+<p> Schroff F, Kalenichenko D, Philbin J. Facenet: A unified embedding for face recognition and clustering[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 2015: 815-823. </p>
+</blockquote>
+<p>这篇论文虽然是是用在人脸识别上的，但是行人重识别中的一个影响力十分大损失函数——triplet loss就是在这篇论文中提出的，之前用到的对比损失（contrastive loss）能够起到缩小类内距离，增大类间距离的作用，从而通过距离判断两类相似与否。但是contrastive loss有一个痛点，就是我们无法约束类间距离和类内距离的大小，虽然缩小了类内距离，也扩大了类间距离，但是类内距离仍然可能比类间距离大，这就是contrastive loss的局限性。由此作者想到增加一个类内距离比类间距离小的约束，于是三元组诞生了，如下图所示：</p>
+<p><div align="center"><img src="https://garyliu0816.github.io/images/ReID_4.png" alt="Triplet Loss"></div></p>
+<p>这里的Anchor指的就是我们的查询图像，Positive是与Anchor一类的图像，Negative是与Anchor不同类的图像，将这三种图像通过CNN提取得到的特征计算欧式距离，放入损失函数中进行计算，就得到了我们的triplet loss：<br>$$<br>L=\sum\limits_i^N{[{\left|f(x_i^a)-f(x_i^p)\right|}_2^2-{\left|f(x_i^a)-f(x_i^n)\right|}<em>2^2+\alpha]</em>+}<br>$$<br>值得注意这里的loss设置了一个超参数$\alpha$，这个参数的作用是要让类内距离不止比类间距离小，还要小一个$\alpha$的距离。</p>
+<p>这个损失函数的基本思想是比较浅显易懂的，但是要让这个损失函数运作起来才是重点。在预训练好的数据集上，由于大多数的类内图像的距离就已经比类间图像的距离小了，因此损失值计算得到的就是0，则模型参数就不会发生更新，如果采用暴力的方式穷举所有可能，那么会浪费大量的算力在无用的计算上，这里的计算复杂度大致为$O(n^5)$，所以是无法穷举的，那么这里作者提出一个Generate triplets Online的方法。也就是在每一批数据中找到一个Positive使之与Anchor之间的距离最大同时再找到一个Negative使之与Anchor之间的距离最小，这样的三元组往往是有效的。</p>
+<p>最后作者还讨论了一下各种因素对模型的影响：</p>
+<p>图像质量：</p>
+<p><div align="center"><img src="https://garyliu0816.github.io/images/ReID_5.png" alt="Image Quality"></div></p>
+<p>嵌入维度：</p>
+<p><div align="center"><img src="https://garyliu0816.github.io/images/ReID_6.png" alt="Embedding Dimensionality"></div></p>
+<p>数据集大小：</p>
+<p><div align="center"><img src="https://garyliu0816.github.io/images/ReID_7.png" alt="Training Data Size"></div></p>
+<p>可以从上图得知嵌入维度在128时效果最好，除此之外，图像质量（尺寸）和数据集大小都是越大好。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/ReID/">ReID</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/学习笔记/">
-            <span class="level-start">
-                <span class="level-item">学习笔记</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/教程/">
-            <span class="level-start">
-                <span class="level-item">教程</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/环境配置/">
-            <span class="level-start">
-                <span class="level-item">环境配置</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li>
-            </ul>
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat.png" alt="微信"></div>
+</a>
+
+                
         </div>
     </div>
-</div></div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Re：从零开始的行人重识别（三）.html">
+                <span class="level-item">Re：从零开始的行人重识别（三）</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'c51dc53e0447e0736f30',
+        clientSecret: '9e76df8d74a5c05517b48c71c3e9541adeb5e97b',
+        id: 'e86c94914b4a9e6bfb944b01e1f721eb',
+        repo: 'comments',
+        owner: 'garyliu0816',
+        admin: "garyliu0816"
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
                 
 
 
@@ -841,7 +946,7 @@ var _hmt = _hmt || [];
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Garyliu&#39;s Blog" height="28">
+                    <img src="/images/logo.svg" alt="Re：从零开始的行人重识别（四）" height="28">
                 
                 </a>
                 <p class="is-size-7">
