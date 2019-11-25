@@ -241,7 +241,7 @@ var _hmt = _hmt || [];
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 447 个字)
+                    3 分钟 读完 (大约 455 个字)
                 </span>
                 
                 
@@ -257,7 +257,7 @@ var _hmt = _hmt || [];
             <h2 id="度量学习之对比损失"><a href="#度量学习之对比损失" class="headerlink" title="度量学习之对比损失"></a>度量学习之对比损失</h2><blockquote>
 <p>Hadsell R, Chopra S, LeCun Y. Dimensionality reduction by learning an invariant mapping[C]//2006 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR’06). IEEE, 2006, 2: 1735-1742.</p>
 </blockquote>
-<p>这篇论文早在2006年就被提出来，其中最重要的核心思想就是减小类内距离，扩大类间距离。因此作者提出一个对比损失（contrastive loss）函数：<br>$$<br><img src="https://garyliu0816.github.io/images/ReID_4.png" alt="Triplet Loss"><br>$$<br>其中，<br>$$<br>D_{W}(\vec{X_1},\vec{X_2})={\left|G_W(\vec{X_1})-G_W(\vec{X_2})\right|}_2<br>$$</p>
+<p>这篇论文早在2006年就被提出来，其中最重要的核心思想就是减小类内距离，扩大类间距离。因此作者提出一个对比损失（contrastive loss）函数：<br>$$<br>L(W,Y,\vec{X_1},\vec{X_2})=(1-Y)\frac{1}{2}{(D_W)}^2+(Y)\frac{1}{2}{(\max{0,m-D_W})}^2<br>$$<br>其中，<br>$$<br>D_{W}(\vec{X_1},\vec{X_2})={\left|G_W(\vec{X_1})-G_W(\vec{X_2})\right|}_2<br>$$</p>
         </div>
         
         
