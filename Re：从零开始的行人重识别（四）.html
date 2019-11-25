@@ -16,7 +16,7 @@
 <meta property="og:description" content="度量学习之三元组损失  Schroff F, Kalenichenko D, Philbin J. Facenet: A unified embedding for face recognition and clustering[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 20">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://garyliu0816.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-11-25T14:56:40.752Z">
+<meta property="og:updated_time" content="2019-11-25T15:26:24.278Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Re：从零开始的行人重识别（四）">
 <meta name="twitter:description" content="度量学习之三元组损失  Schroff F, Kalenichenko D, Philbin J. Facenet: A unified embedding for face recognition and clustering[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 20">
@@ -194,7 +194,7 @@ var _hmt = _hmt || [];
 <div align="center">![Triplet Loss](https://garyliu0816.github.io/images/ReID_4.png)
 
 <p>这里的Anchor指的就是我们的查询图像，Positive是与Anchor一类的图像，Negative是与Anchor不同类的图像，将这三种图像通过CNN提取得到的特征计算欧式距离，放入损失函数中进行计算，就得到了我们的triplet loss：</p>
-<p>$$<br>L = \sum_\limits{i}^{N}{[{\left| f(x_{i}^{a})-f(x_{i}^{p}) \right |}<em>{2}^{2}-{\left| f(x</em>{i}^{a})-f(x_{i}^{n}) \right |}<em>{2}^{2} + \alpha]}</em>{+}<br>$$</p>
+<p>$$<br>L = \sum\limits_{i}^{N}{[{\left| f(x_{i}^{a})-f(x_{i}^{p}) \right |}<em>{2}^{2}-{\left| f(x</em>{i}^{a})-f(x_{i}^{n}) \right |}<em>{2}^{2} + \alpha]}</em>{+}<br>$$</p>
 <p>值得注意这里的loss设置了一个超参数$\alpha$，这个参数的作用是要让类内距离不止比类间距离小，还要小一个$\alpha$的距离。</p>
 <p>这个损失函数的基本思想是比较浅显易懂的，但是要让这个损失函数运作起来才是重点。在预训练好的数据集上，由于大多数的类内图像的距离就已经比类间图像的距离小了，因此损失值计算得到的就是0，则模型参数就不会发生更新，如果采用暴力的方式穷举所有可能，那么会浪费大量的算力在无用的计算上，这里的计算复杂度大致为$O(n^5)$，所以是无法穷举的，那么这里作者提出一个Generate triplets Online的方法。也就是在每一批数据中找到一个Positive使之与Anchor之间的距离最大同时再找到一个Negative使之与Anchor之间的距离最小，这样的三元组往往是有效的。</p>
 <p>最后作者还讨论了一下各种因素对模型的影响：</p>
